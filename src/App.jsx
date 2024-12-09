@@ -1,7 +1,6 @@
-
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home/Home";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
@@ -16,4 +15,3 @@ function App() {
 }
 
 export default App;
-  
