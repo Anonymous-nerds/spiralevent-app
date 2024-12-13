@@ -23,7 +23,7 @@ export const NavbarMenu = [
 
 export const resourcesLinks = [
     { href: "#", text: "Getting Started"},
-    { href: "#", text: "Documentation"},
+    { href: "#", text: "Having an Event"},
     { href: "#", text: "Tutorials"},
     { href: "#", text: "API Reference"},
     { href: "#", text: "Community Forums"},
