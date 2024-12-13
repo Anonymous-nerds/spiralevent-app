@@ -1,8 +1,7 @@
-import React from 'react'
-import logo from "../assets/spiraleE4.png"
+import React from "react";
 import { Calendar, MapPin } from "lucide-react";
 
-const card = () => {
+const card = ({ logo, title, details, date, location }) => {
   return (
     <div className="bg-neutral-100 text-pink-900 p-6 rounded-lg shadow-xl max-w-lg w-full flex items-center space-x-4 m-9">
       {/* Logo */}
@@ -15,21 +14,19 @@ const card = () => {
 
       {/* Event Details */}
       <div>
-        <h3 className="text-xl font-bold">Spiral Event</h3>
-        <p className="flex items-center text-sm mt-2">
-          Join us, as we Unlock the Future of AI-Driven Event Management.
-        </p>
+        <h3 className="text-xl font-bold">{title}</h3>
+        <p className="flex items-center text-sm mt-2">{details}</p>
         <p className="flex items-center text-sm mt-2">
           <Calendar className="w-4 h-4 mr-2" />
-          13th Dec 2024, 7:00 PM
+          {date}
         </p>
         <p className="flex items-center text-sm mt-1">
           <MapPin className="w-4 h-4 mr-2" />
-          Bayero University, Kano
+          {location}
         </p>
       </div>
     </div>
   );
-}
+};
 
-export default card
+export default card;
