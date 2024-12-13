@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Button from "./components/button";
 import Card from "./components/card";
-import Formpage from "./components/card";
+import Formpage from "./components/formPage";
 
 function App() {
   return (

@@ -21,7 +21,7 @@ const button = () => {
          <button className="sm:px-6 lg:px-8 text-sm sm:text-base lg:text-lg bg-pink-900 text-white py-3 px-4 rounded animate-pulse">
           Button 5
         </button>
-        <button className="sm:px-6 lg:px-8 text-sm sm:text-base lg:text-lg bg-pink-900 text-white py-3 px-4 rounded transform transition-transform duration-500 translate-x-0 hover:translate-x-2">
+        <button className="sm:px-6 lg:px-8 text-sm sm:text-base lg:text-lg bg-pink-900 text-white py-3 px-4 rounded transform transition-transform duration-500 translate-x-0 hover:bg-pink-700 hover:translate-x-2">
           Button 6
         </button>
       </div>
