@@ -7,7 +7,6 @@ const Home = () => {
     <div>
       <div className="">
         <Nav />
-
         <Footer />
       </div>
     </div>
