@@ -1,11 +1,8 @@
 import React from "react";
-import { NavbarMenu } from "../mockData/data";
-import { CiSearch } from "react-icons/ci";
+import { NavbarMenu } from "../../mockData/data";
 import { MdMenu } from "react-icons/md";
-import { PiShoppingCartThin } from "react-icons/pi";
-import { FaDumbbell } from "react-icons/fa";
-import ResponsiveMenu from "./ResponsiveMenu";
-import logo from "../assets/spiralee3.png";
+import ResponsiveMenu from "../ResponsiveMenu";
+import logo from "../../assets/spiraleE4.png";
 
 const Nav = () => {
   const [open, setOpen] = React.useState(false);
@@ -15,11 +12,7 @@ const Nav = () => {
         <div className="container flex justify-between items-center py-8">
           {/* Logo Section */}
           <div className="text-2xl flex items-center gap-2 font-bold uppercase">
-            <img
-              src={logo}
-              alt=""
-              className=" flex logo w-[160px] cursor-pointer"
-            />
+            <img src={logo} alt="" className=" flex logo w-10 cursor-pointer" />
           </div>
 
           {/* Menu Section */}
@@ -42,19 +35,12 @@ const Nav = () => {
 
           {/* Icons Section */}
           <div className="flex items-center gap-4 ">
-            <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200">
-              <CiSearch />
-            </button>
-            {/*Shopping cart button*/}
-            <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200">
-              <FaDumbbell />
-            </button>
             {/*BUTTON*/}
             <button
               className="hover:bg-primary font-semibold hover:text-white rounded-full 
           border-2 border-primary px-6 py-2 duration-200 hiddenmd:block"
             >
-              Login
+              Get started
             </button>
           </div>
 

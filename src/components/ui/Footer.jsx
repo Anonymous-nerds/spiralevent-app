@@ -3,7 +3,7 @@ import {
   resourcesLinks,
   platformLinks,
   communityLinks,
-} from "../mockData/data";
+} from "../../mockData/data";
 import { footer } from "framer-motion/client";
 
 const Footer = () => {
