@@ -6,7 +6,8 @@ import BtnPrimary from "../../components/btnPrimary.jsx";
 import BtnOutline from "../../components/btnOutline.jsx";
 import BtnRounded from "../../components/btnRounded.jsx";
 import Card from "../../components/ui/card.jsx";
-import FormPage from "../../components/ui/formPage.jsx";
+import ContactForm from "../../components/ui/contactForm.jsx";
+import PIForm from "../../components/ui/PIForm.jsx";
 
 const Sample = () => {
   return (
@@ -29,7 +30,9 @@ const Sample = () => {
           location={"Bayero University, Kano"}
         />
         <div className="mt-5"></div>
-        <FormPage />
+        <ContactForm />
+        <div className="mt-5"></div>
+        <PIForm />
       </div>
 
       <Footer />
