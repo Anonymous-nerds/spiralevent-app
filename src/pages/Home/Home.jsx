@@ -1,4 +1,3 @@
-
 import React from "react";
 import { SiVite } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
@@ -168,5 +167,3 @@ function Home() {
 }
 
 export default Home;
-
-  
