@@ -1,17 +1,28 @@
-import React from "react";
-import logo from '../../assets/spiraleE4.png'
+import React, { useState } from "react";
+import logo from "../../assets/spiraleE4.png";
 
 const contactForm = () => {
+
+  const [error, isError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Hello World");
+  };
+
   return (
     <div>
-      <form className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl m-8 p-8">
-        {/* <h3 className="text-3xl md:text-4xl font-bold flex gap-3 text-gray-800 mb-2">
-          <img src={logo} alt="" className="h-10" />{" "}
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl m-8 p-8"
+      >
+        <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-2">
+          <img src={logo} alt="" className="h-8" />{" "}
           <span>
             Spiral
             <span className="text-pink-900">Event</span>
           </span>
-        </h3> */}
+        </h3>
 
         <h2 className="text-2xl font-bold mb-4 text-pink-900 flex justify-center">
           Create an Account
@@ -21,30 +32,34 @@ const contactForm = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-700 font-bold mb-2">
-                First Name:
+                Full Name:
               </label>
               <input
                 type="text"
-                placeholder="First Name"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-pink-900 focus:outline-none"
+                placeholder="full Name"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none"
               />
+              
+              <span className="text-red-500 w-full text-sm">
+                Full Name is Required
+              </span>
             </div>
             <div>
               <label className="block text-gray-700 font-bold mb-2">
-                Last Name:
+                Username:
               </label>
               <input
                 type="text"
-                placeholder="Last Name"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-pink-900 focus:outline-none"
+                placeholder="username"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none"
               />
             </div>
           </div>
           <label className="block text-gray-700 font-bold mb-2">Email:</label>
           <input
             type="email"
-            placeholder="Enter Email"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-pink-900 focus:outline-none"
+            placeholder="enter Email"
+            className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none"
           />
           <label className="block text-gray-700 font-bold mb-2">
             Create Password:
@@ -52,7 +67,7 @@ const contactForm = () => {
           <input
             type="password"
             placeholder="create password"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-pink-900 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none"
           />
           <label className="block text-gray-700 font-bold mb-2">
             Confirm Password:{" "}
@@ -60,7 +75,7 @@ const contactForm = () => {
           <input
             type="password"
             placeholder="confirm password"
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-pink-900 focus:outline-none"
+            className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none"
           />
         </div>
         <button
