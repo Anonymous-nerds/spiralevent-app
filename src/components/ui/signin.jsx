@@ -3,7 +3,6 @@ import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
 import { UserCircle, Lock } from "lucide-react";
 
-
 const signin = () => {
   return (
     <div>
@@ -16,19 +15,19 @@ const signin = () => {
           </span>
         </h3>
 
-        <h2 className="text-2xl font-bold mb-4 text-pink-900 flex justify-center lg:text-2xl sm:text-xl">
+        <h2 className="text-2xl font-bold mb-5 text-pink-900 flex justify-center lg:text-2xl sm:text-xl">
           Log in with your account
         </h2>
 
         <div className="space-y-4">
-          <label className="block text-gray-700 font-bold mb-1 flex items-center">
-            <UserCircle className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+          <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+            <UserCircle className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Email:
           </label>
           <input
             type="email"
             placeholder="Enter Email"
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-pink-900"
             // value={data.email}
             // onChange={(e) => setData({ ...data, email: e.target.value })}
           />
@@ -36,14 +35,14 @@ const signin = () => {
             <span className="text-red-500 text-sm">{errors.email}</span>
           )} */}
 
-          <label className="block text-gray-700 font-bold mb-1 flex items-center">
-            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+          <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+            <Lock className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Password:
           </label>
           <input
             type="password"
             placeholder="Enter Password"
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-pink-900"
             // value={data.password}
             // onChange={(e) => setData({ ...data, password: e.target.value })}
           />
@@ -59,7 +58,7 @@ const signin = () => {
           Log in
         </button>
         <p className="text-sm text-gray-600 flex justify-center mt-4">
-          Don't have an account?{" "}
+          Don`t have an account?{" "}
           <Link to="/register" className="text-pink-900 underline">
             Sign Up
           </Link>

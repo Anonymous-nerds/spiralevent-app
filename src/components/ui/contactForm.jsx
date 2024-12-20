@@ -76,8 +76,8 @@ const ContactForm = () => {
         <div className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-700 font-bold flex items-center mb-2">
-                <User className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+              <label className="text-sm text-gray-700 font-semibold flex items-center mb-1">
+                <User className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
                 Full Name:
               </label>
               <input
@@ -92,8 +92,8 @@ const ContactForm = () => {
               )}
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2 flex items-center">
-                <UserCircle className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+              <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+                <UserCircle className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
                 Username:
               </label>
               <input
@@ -109,8 +109,8 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <label className="block text-gray-700 font-bold mb-2 flex items-center">
-            <Mail className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+          <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+            <Mail className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Email:
           </label>
           <input
@@ -124,14 +124,14 @@ const ContactForm = () => {
             <span className="text-red-500 text-sm">{errors.email}</span>
           )}
 
-          <label className="block text-gray-700 font-bold mb-2 flex items-center">
-            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+          <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+            <Lock className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Create Password:
           </label>
           <input
             type="password"
             placeholder="Create Password"
-            className={`w-full border ${borderColors.password} rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none`}
+            className={` text-sm w-full border ${borderColors.password} rounded-lg p-2 focus:ring-2 focus:ring-pink-900 focus:outline-none`}
             value={data.password}
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
@@ -139,8 +139,8 @@ const ContactForm = () => {
             <span className="text-red-500 text-sm">{errors.password}</span>
           )}
 
-          <label className="block text-gray-700 font-bold mb-2 flex items-center">
-            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+          <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
+            <Lock className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Confirm Password:
           </label>
           <input
@@ -157,7 +157,7 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className="w-1/3 mx-auto mt-6 bg-pink-900 text-white py-3 rounded-lg flex justify-center hover:bg-pink-700 hover:scale-105 shadow-lg transition-transform duration-300"
+          className="w-1/3 text-sm mx-auto mt-6 bg-pink-900 text-white py-3 rounded-lg flex justify-center hover:bg-pink-700 hover:scale-105 shadow-lg transition-transform duration-300"
         >
           Sign Up
         </button>
