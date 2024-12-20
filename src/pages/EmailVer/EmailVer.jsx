@@ -1,5 +1,6 @@
 import React from 'react'
 import { CiLock } from 'react-icons/ci'
+import { FaArrowRight } from 'react-icons/fa'
 
 const EmailVer = () => {
   return (
@@ -7,7 +8,7 @@ const EmailVer = () => {
         <div className='smallerdiv'>
             <div>
                 <button className='text-2xl bg-pink-900 hover:text-white rounded-full p-2 duration-200'>
-                <CiLock />
+                <FaArrowRight />
                </button>
             </div>
 

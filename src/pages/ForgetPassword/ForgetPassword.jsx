@@ -1,5 +1,6 @@
 import React from 'react'
 import { CiLock } from 'react-icons/ci'
+import { FaArrowRight } from 'react-icons/fa'
 
 const ForgetPassword = () => {
   return (
@@ -8,12 +9,12 @@ const ForgetPassword = () => {
         {/*icon*/}
       <div>
         <button className='text-2xl bg-pink-900 hover:text-white rounded-full p-2 duration-200'>
-                    <CiLock />
+                    <FaArrowRight />
          </button>
       </div>
 
       <div className='text'>
-        <h2 className='text-3xl font-semibold  p-5'>Forgot password?</h2>
+        <h2 className='text-5xl font-semibold  p-5'>Forgot password?</h2>
         <p className='text-gray-600'>Enter your email to recieve a verification code</p>
       </div>
 
