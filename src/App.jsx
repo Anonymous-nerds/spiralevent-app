@@ -10,7 +10,7 @@ import EmailVer from "./pages/EmailVer/EmailVer";
 
 function App() {
   return (
-    <div className="App font-sans">
+    <div className="App font-nunito-eb">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
