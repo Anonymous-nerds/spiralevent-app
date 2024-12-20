@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
+import { User, UserCircle, Mail, Lock } from "lucide-react";
 
 const ContactForm = () => {
   const [errors, setErrors] = useState({});
@@ -68,14 +69,15 @@ const ContactForm = () => {
           </span>
         </h3>
 
-        <h2 className="text-2xl font-bold mb-4 text-pink-900 flex justify-center">
+        <h2 className="text-2xl font-bold mb-6 text-pink-900 flex justify-center">
           Create an Account
         </h2>
 
         <div className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
+              <label className="block text-gray-700 font-bold flex items-center mb-2">
+                <User className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
                 Full Name:
               </label>
               <input
@@ -90,7 +92,8 @@ const ContactForm = () => {
               )}
             </div>
             <div>
-              <label className="block text-gray-700 font-bold mb-2">
+              <label className="block text-gray-700 font-bold mb-2 flex items-center">
+                <UserCircle className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
                 Username:
               </label>
               <input
@@ -106,7 +109,10 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <label className="block text-gray-700 font-bold mb-2">Email:</label>
+          <label className="block text-gray-700 font-bold mb-2 flex items-center">
+            <Mail className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+            Email:
+          </label>
           <input
             type="email"
             placeholder="Enter Email"
@@ -118,7 +124,8 @@ const ContactForm = () => {
             <span className="text-red-500 text-sm">{errors.email}</span>
           )}
 
-          <label className="block text-gray-700 font-bold mb-2">
+          <label className="block text-gray-700 font-bold mb-2 flex items-center">
+            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
             Create Password:
           </label>
           <input
@@ -132,7 +139,8 @@ const ContactForm = () => {
             <span className="text-red-500 text-sm">{errors.password}</span>
           )}
 
-          <label className="block text-gray-700 font-bold mb-2">
+          <label className="block text-gray-700 font-bold mb-2 flex items-center">
+            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
             Confirm Password:
           </label>
           <input
@@ -153,12 +161,12 @@ const ContactForm = () => {
         >
           Sign Up
         </button>
-          <p className="text-sm text-gray-600 flex justify-center mt-4">
-            Already have an account?{" "}
-            <Link to="/login" className="text-pink-900 underline">
-              Log in
-            </Link>
-          </p>
+        <p className="text-sm text-gray-600 flex justify-center mt-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-pink-900 underline">
+            Log in
+          </Link>
+        </p>
       </form>
     </div>
   );

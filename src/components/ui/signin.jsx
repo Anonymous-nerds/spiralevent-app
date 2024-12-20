@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
+import { UserCircle, Lock } from "lucide-react";
 
 
 const signin = () => {
@@ -20,42 +21,14 @@ const signin = () => {
         </h2>
 
         <div className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Full Name:
-              </label>
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              {/* {errors.name && (
-                <span className="text-red-500 text-sm">{errors.name}</span>
-              )} */}
-            </div>
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Username:
-              </label>
-              <input
-                type="text"
-                placeholder="Username"
-                className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // value={data.username}
-                // onChange={(e) => setData({ ...data, username: e.target.value })}
-              />
-              {/* {errors.username && (
-                <span className="text-red-500 text-sm">{errors.username}</span>
-              )} */}
-            </div>
-          </div>
-
-          <label className="block text-gray-700 font-bold mb-2">Email:</label>
+          <label className="block text-gray-700 font-bold mb-1 flex items-center">
+            <UserCircle className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
+            Email:
+          </label>
           <input
             type="email"
             placeholder="Enter Email"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             // value={data.email}
             // onChange={(e) => setData({ ...data, email: e.target.value })}
           />
@@ -63,13 +36,14 @@ const signin = () => {
             <span className="text-red-500 text-sm">{errors.email}</span>
           )} */}
 
-          <label className="block text-gray-700 font-bold mb-2">
+          <label className="block text-gray-700 font-bold mb-1 flex items-center">
+            <Lock className="w-5 h-5 text-gray-800 mr-2 flex items-center" />
             Password:
           </label>
           <input
             type="password"
             placeholder="Enter Password"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             // value={data.password}
             // onChange={(e) => setData({ ...data, password: e.target.value })}
           />
@@ -84,12 +58,12 @@ const signin = () => {
         >
           Log in
         </button>
-          <p className="text-sm text-gray-600 flex justify-center mt-4">
-            Don't have an account?{" "}
-            <Link to="/register" className="text-pink-900 underline">
-              Sign Up
-            </Link>
-          </p>
+        <p className="text-sm text-gray-600 flex justify-center mt-4">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-pink-900 underline">
+            Sign Up
+          </Link>
+        </p>
       </form>
     </div>
   );
