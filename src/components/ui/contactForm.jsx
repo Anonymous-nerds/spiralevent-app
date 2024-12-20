@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/spiraleE4.png";
+import { Link } from "react-router-dom";
 
 const ContactForm = () => {
   const [errors, setErrors] = useState({});
@@ -57,9 +58,9 @@ const ContactForm = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl m-8 p-8"
+        className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl mt-10 p-8"
       >
-        <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-2">
+        <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-4">
           <img src={logo} alt="" className="h-8" />
           <span>
             Spiral
@@ -152,6 +153,12 @@ const ContactForm = () => {
         >
           Sign Up
         </button>
+          <p className="text-sm text-gray-600 flex justify-center mt-4">
+            Already have an account?{" "}
+            <Link to="/login" className="text-pink-900 underline">
+              Log in
+            </Link>
+          </p>
       </form>
     </div>
   );
