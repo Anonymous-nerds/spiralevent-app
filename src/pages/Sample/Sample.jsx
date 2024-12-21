@@ -6,7 +6,7 @@ import BtnPrimary from "../../components/btnPrimary.jsx";
 import BtnOutline from "../../components/btnOutline.jsx";
 import BtnRounded from "../../components/btnRounded.jsx";
 import Card from "../../components/ui/card.jsx";
-import ContactForm from "../../components/ui/contactForm.jsx";
+import ContactForm from "../../components/ui/RegisterForm.jsx";
 import PIForm from "../../components/ui/PIForm.jsx";
 
 const Sample = () => {

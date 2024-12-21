@@ -1,16 +1,13 @@
-import React from 'react'
-import heroimg from "../../assets/login.svg"
-import Pif from "../../components/ui/signin";
-import { Link } from "react-router-dom";
-
-
+import React from "react";
+import heroimg from "../../assets/login.svg";
+import LoginForm from "../../components/ui/LoginForm";
 
 const Login = () => {
   return (
     <div className="h-screen w-full flex flex-col lg:flex-row">
       <div className="w-full h-screen lg:w-1/2 p-6 md:p-12 bg-neutral-100 flex items-center justify-center">
         <div className="w-full max-w-md">
-          <Pif/>
+          <LoginForm />
         </div>
       </div>
 
@@ -19,6 +16,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

@@ -3,7 +3,7 @@ import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
 import { UserCircle, Lock } from "lucide-react";
 
-const signin = () => {
+const LoginForm = () => {
   return (
     <div>
       <form className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl m-8 p-8">
@@ -57,7 +57,7 @@ const signin = () => {
         >
           Log in
         </button>
-        <p className="text-sm text-gray-600 flex justify-center mt-4">
+        <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
           Don`t have an account?{" "}
           <Link to="/register" className="text-pink-900 underline">
             Sign Up
@@ -68,4 +68,4 @@ const signin = () => {
   );
 };
 
-export default signin;
+export default LoginForm;

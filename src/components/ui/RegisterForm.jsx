@@ -3,7 +3,7 @@ import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
 import { User, UserCircle, Mail, Lock } from "lucide-react";
 
-const ContactForm = () => {
+const RegisterForm = () => {
   const [errors, setErrors] = useState({});
   const [borderColors, setBorderColors] = useState({
     name: "border-gray-300",
@@ -161,7 +161,7 @@ const ContactForm = () => {
         >
           Sign Up
         </button>
-        <p className="text-sm text-gray-600 flex justify-center mt-4">
+        <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-pink-900 underline">
             Log in
@@ -172,4 +172,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default RegisterForm;
