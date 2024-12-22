@@ -3,6 +3,7 @@ import { NavbarMenu } from "../../mockData/data";
 import { MdMenu } from "react-icons/md";
 import ResponsiveMenu from "../ResponsiveMenu";
 import logo from "../../assets/spiraleE4.png";
+import "../../App.css"
 
 const Nav = () => {
   const [open, setOpen] = React.useState(false);
@@ -12,7 +13,7 @@ const Nav = () => {
         <div className="container flex justify-between items-center py-8">
           {/* Logo Section */}
           <div className="text-2xl flex items-center gap-2 font-bold uppercase">
-            <img src={logo} alt="" className=" flex logo w-10 cursor-pointer" />
+            <img src={logo} alt="" className="App-logo flex logo w-10 cursor-pointer" />
           </div>
 
           {/* Menu Section */}
