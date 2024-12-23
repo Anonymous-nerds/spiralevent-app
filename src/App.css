@@ -16,6 +16,8 @@
   animation: App-logo-spin infinite 15s linear;
   pointer-events: none;
 }
-
+.App-logo:hover{
+  animation: none;
+}
 
   
