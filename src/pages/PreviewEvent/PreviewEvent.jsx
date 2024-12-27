@@ -9,8 +9,8 @@ import EventCard from "../../components/ui/card.jsx"
 const PreviewEvent = () => {
   return (
     <div className="PreviewEvent">
-      <div className="min-h-screen bg-gradient-to-b from-white to-neutral-100">
-        <div className="sticky top-0 z-50 bg-neutral-100 backdrop-blur-sm border-b">
+      <div className="">
+        <div className="border-b">
           <Nav />
         </div>
 
