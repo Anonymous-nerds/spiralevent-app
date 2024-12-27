@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/spiraleE4.png";
 import { Link } from "react-router-dom";
 import { User, UserCircle, Mail, Lock } from "lucide-react";
-import "../../App.css"
+import "../../App.css";
 
 const RegisterForm = () => {
   const [errors, setErrors] = useState({});
@@ -63,7 +63,7 @@ const RegisterForm = () => {
         className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl mt-10 p-8"
       >
         <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-4">
-          <img src={logo} alt="" className=" App-logo h-8" />
+          <img src={logo} alt="" className="App-logo h-8" />
           <span>
             Spiral
             <span className="text-pink-900">Event</span>

@@ -1,81 +1,112 @@
 import React from "react";
+import "./PreviewEvent.scss";
 import Nav from "../../components/ui/Nav.jsx";
-import img from "../../assets/events.png"
+import logo from "../../assets/react.svg";
 import image from "../../assets/pretty.png"
-import { FaArrowLeft } from "react-icons/fa";
-import { CalendarMinusIcon } from "lucide-react";
-import { LocateIcon } from "lucide-react";
+import { CalendarMinusIcon, LocateIcon, Tickets } from "lucide-react";
+import EventCard from "../../components/ui/card.jsx"
 
 const PreviewEvent = () => {
   return (
-    <div className="w-full h-full">
-      <div className="navbar bg-transparent shadow-sm">
-      <Nav />
-      </div>
-      {/*Top/left corner */}
-      <div className="smallerdiv md:ml-10  md:p-5 md:flex">
-        <div>
-          <img src={image} alt="" className="rounded-md md:rounded-[10%] " />
+    <div className="PreviewEvent">
+      <div className="min-h-screen bg-gradient-to-b from-white to-neutral-100">
+        <div className="sticky top-0 z-50 bg-neutral-100 backdrop-blur-sm border-b">
+          <Nav />
         </div>
 
+        <main className="py-10">
+          {/* Event Hero Section */}
+          <div className="m-5 flex flex-col lg:flex-row gap-8 mb-12">
+            {/* Image Container */}
+            <div className="lg:w-1/2">
+              <div className="relative overflow-hidden rounded-lg shadow-xl">
+                <img src={image} alt="Event preview" className="previewImage" />
+              </div>
+            </div>
 
-        {/*buttom/right corner */}
-        <div className="w-full h-full pt-10   justify-center  ml-8">
-          <div className="p-5">
-            <h2 className="text-3xl md:text-5xl font-semibold">Register your Event</h2>
-          </div>
+            {/* Event Details */}
+            <div className="lg:w-1/2 space-y-6 mt-10">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Register your Event
+              </h1>
 
-          <div className="flex justify-between">
-            <ul className="flex justify-between">
-              <div className="rounded-full flex bg-pink-800 ml-5">
-                <li className="p-3 font-medium">Sweeter</li>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1">
+                {["Sweeter", "Food", "Betterthan"].map((tag) => (
+                  <span key={tag} className="tag">{tag}</span>
+                ))}
+                <span className="px-4 py-2 text-gray-600 font-medium text-sm">
+                  <span className="font-bold text-black">By</span> Habiba | Fun Event
+                </span>
               </div>
-              <div className="rounded-full flex bg-pink-700 ml-5">
-                <li className="p-3 font-medium ">Food</li>
+              <button className="buyBtn flex gap-2">Buy Ticket <Tickets /></button>
+
+              {/* Date and Location */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CalendarMinusIcon className="iconStyle" />
+                  <p className="text-xl font-semibold text-gray-800">27th December 2024</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <LocateIcon className="iconStyle" />
+                  <p className="text-xl font-semibold text-gray-800">Abuja, Nigeria</p>
+                </div>
               </div>
-              <div className="rounded-full flex bg-pink-700 ml-5">
-                <li className="p-3 font-medium ">Betterthan</li>
-              </div>
+
+              {/* About Section */}
               <div>
-              <li className="text-black underline font-medium p-3">By Habiba|Fun Event </li>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  About Event
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione
+                  neque, eius sequi minima corporis, dicta illum, numquam
+                  voluptatem iure unde dolorem dolore. Voluptatem molestias saepe
+                  explicabo officiis quasi, perspiciatis illo.
+                </p>
+              </div>
             </div>
-            </ul>
           </div>
-
-          <div className='p-5 '>
-            <button className='rounded-full text-xl bg-pink-700 w-[120px] shadow-md text-center font-semibold justify-center h-[50px]'>
-              Buy Now
-            </button>
-          </div>
-
-          <div className=' pb-5 pl-5'>
-            <div className=''>
-              <button>
-              
-              </button>
-            <h3 className='text-2xl font-bold pb-3'>
-              27rd December 2024
-            </h3>
+          {/* Related Events Section */}
+          <section className="mt-10">
+            <h2 className="text-3xl font-bold text-gray-900 ml-10 mb-6">Related Events</h2>
+            <div className="p-5 space-y-1 lg:grid lg:grid-cols-3 lg:gap-x-3 lg:space-y-0">
+              {/* Add your related events cards here */}
+              <div className=""><EventCard logo={logo}
+                title={"Spiral Event"}
+                details={
+                  " Join us, as we Unlock the Future of AI-Driven Event Management."
+                }
+                date={"13th Dec 2024, 7:00 PM"}
+                location={"Bayero University, Kano"} /></div>
+              <div className=""><EventCard logo={logo}
+                title={"Spiral Event"}
+                details={
+                  " Join us, as we Unlock the Future of AI-Driven Event Management."
+                }
+                date={"13th Dec 2024, 7:00 PM"}
+                location={"Bayero University, Kano"} /></div>
+              <div className=""><EventCard logo={logo}
+                title={"Spiral Event"}
+                details={
+                  " Join us, as we Unlock the Future of AI-Driven Event Management."
+                }
+                date={"13th Dec 2024, 7:00 PM"}
+                location={"Bayero University, Kano"} /></div>
+              <div className=""><EventCard logo={logo}
+                title={"Spiral Event"}
+                details={
+                  " Join us, as we Unlock the Future of AI-Driven Event Management."
+                }
+                date={"13th Dec 2024, 7:00 PM"}
+                location={"Bayero University, Kano"} /></div>
             </div>
-            <h3 className='text-2xl font-bold'>
-              Abuja Nigeria
-            </h3>
-          </div>
 
-          <div className='p-5 '>
-            <h3 className='text-2xl font-bold'>About Event</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione neque, eius sequi minima corporis, dicta illum, numquam voluptatem iure unde dolorem dolore. Voluptatem molestias saepe explicabo officiis quasi, perspiciatis illo.</p>
-          </div>
-
-        </div>
-
+          </section>
+        </main>
       </div>
-
-      <div>
-        <h3 className='text-3xl font-bold p-10'>Related Events</h3>
-      </div>
-     
     </div>
+
   );
 };
 
