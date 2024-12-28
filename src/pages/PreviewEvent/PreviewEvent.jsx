@@ -1,10 +1,11 @@
 import React from "react";
 import "./PreviewEvent.scss";
 import Nav from "../../components/ui/MainNav.jsx";
-import logo from "../../assets/react.svg";
+import Banner from "../../assets/fest.png";
+import Event from "../../assets/pretty.png"
 import image from "../../assets/pretty.png"
 import { CalendarMinusIcon, LocateIcon, Tickets } from "lucide-react";
-import EventCard from "../../components/ui/card.jsx"
+import EventCard from "../../components/ui/EventCard.jsx"
 
 const PreviewEvent = () => {
   return (
@@ -70,29 +71,27 @@ const PreviewEvent = () => {
             <div className="p-5 space-y-1 lg:grid lg:grid-cols-3 lg:gap-x-3 lg:space-y-0">
               {/* Add your related events cards here */}
               <div className="">
-                <EventCard logo={logo}
+                <EventCard
+                  Banner={Banner}
                   title={"Spiral Event Fest 2024"}
-                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
                   date={"13th Dec 2024, 7:00 PM"}
                   location={"Bayero University, Kano"} />
               </div>
               <div className="">
-                <EventCard logo={logo}
-                  title={"Spiral Event Fest 2024"}
-                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+                <EventCard Banner={Event}
+                  title={"Spiral Event Fest 2024 ~ The start of a new AI age"}
                   date={"13th Dec 2024, 7:00 PM"}
                   location={"Bayero University, Kano"} />
               </div>
               <div className="">
-                <EventCard logo={logo}
-                  title={"Spiral Event Fest 2024"}
-                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+                <EventCard Banner={Banner}
+                  title={"Spiral Event Fest 2024 ~ The start of a new AI age"}
+
                   date={"13th Dec 2024, 7:00 PM"}
                   location={"Bayero University, Kano"} />
               </div>
-              <div className=""><EventCard logo={logo}
-                title={"Spiral Event Fest 2024"}
-                details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+              <div className=""><EventCard Banner={Event}
+                title={"Spiral Event Fest 2024 ~ The start of a new AI age"}
                 date={"13th Dec 2024, 7:00 PM"}
                 location={"Bayero University, Kano"} />
               </div>
