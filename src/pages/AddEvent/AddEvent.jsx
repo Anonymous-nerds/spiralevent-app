@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Nav from "../../components/ui/Nav.jsx";
+import Nav from "../../components/ui/MainNav";
 import "./AddEvent.scss"
 import { Link } from "react-router-dom";
 import logo from "../../assets/spiraleE4.png";
@@ -20,7 +20,7 @@ const AddEvent = () => {
   return (
     <div className="AddEvent min-h-screen bg-gradient-to-br from-pink-50 to-white">
       <Nav />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-3">
         <div className="max-w-4xl mx-auto overflow-hidden shadow-sm rounded-xl">
           <div className="p-6 md:p-8">
             {/* Header */}

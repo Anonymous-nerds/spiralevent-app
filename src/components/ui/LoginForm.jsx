@@ -39,7 +39,7 @@ const LoginForm = () => {
     <div>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl m-8 p-8">
         <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-4">
-          <img src={logo} alt="" className=" App-logo h-8" />
+          <img src={logo} alt="" className="App-logo h-8" />
           <span>
             Spiral
             <span className="text-pink-900">Event</span>
