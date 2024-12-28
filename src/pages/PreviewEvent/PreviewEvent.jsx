@@ -90,12 +90,7 @@ const PreviewEvent = () => {
                   date={"13th Dec 2024, 7:00 PM"}
                   location={"Bayero University, Kano"} />
               </div>
-              <div className=""><EventCard logo={logo}
-                title={"Spiral Event Fest 2024"}
-                details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
-                date={"13th Dec 2024, 7:00 PM"}
-                location={"Bayero University, Kano"} />
-              </div>
+          
             </div>
 
           </section>
