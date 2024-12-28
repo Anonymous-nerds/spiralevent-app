@@ -9,7 +9,7 @@ const Nav = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <nav>
+      <nav className="shadow-lg">
         <div className="container flex justify-between items-center py-8">
           {/* Logo Section */}
           <div className="text-2xl flex items-center gap-2 font-bold uppercase">
