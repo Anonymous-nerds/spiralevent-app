@@ -26,10 +26,7 @@ const PreviewEvent = () => {
 
             {/* Event Details */}
             <div className="lg:w-1/2 space-y-6 mt-10">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
-                Register your Event
-              </h1>
-
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">Register your Event</h1>
               {/* Tags */}
               <div className="flex flex-wrap gap-1">
                 {["Sweeter", "Food", "Betterthan"].map((tag) => (
@@ -72,34 +69,33 @@ const PreviewEvent = () => {
             <h2 className="text-3xl font-bold text-gray-900 ml-10 mb-6">Related Events</h2>
             <div className="p-5 space-y-1 lg:grid lg:grid-cols-3 lg:gap-x-3 lg:space-y-0">
               {/* Add your related events cards here */}
+              <div className="">
+                <EventCard logo={logo}
+                  title={"Spiral Event Fest 2024"}
+                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+                  date={"13th Dec 2024, 7:00 PM"}
+                  location={"Bayero University, Kano"} />
+              </div>
+              <div className="">
+                <EventCard logo={logo}
+                  title={"Spiral Event Fest 2024"}
+                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+                  date={"13th Dec 2024, 7:00 PM"}
+                  location={"Bayero University, Kano"} />
+              </div>
+              <div className="">
+                <EventCard logo={logo}
+                  title={"Spiral Event Fest 2024"}
+                  details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
+                  date={"13th Dec 2024, 7:00 PM"}
+                  location={"Bayero University, Kano"} />
+              </div>
               <div className=""><EventCard logo={logo}
-                title={"Spiral Event"}
-                details={
-                  " Join us, as we Unlock the Future of AI-Driven Event Management."
-                }
+                title={"Spiral Event Fest 2024"}
+                details={"Join us, as we Unlock the Future of AI-Driven Event Management."}
                 date={"13th Dec 2024, 7:00 PM"}
-                location={"Bayero University, Kano"} /></div>
-              <div className=""><EventCard logo={logo}
-                title={"Spiral Event"}
-                details={
-                  " Join us, as we Unlock the Future of AI-Driven Event Management."
-                }
-                date={"13th Dec 2024, 7:00 PM"}
-                location={"Bayero University, Kano"} /></div>
-              <div className=""><EventCard logo={logo}
-                title={"Spiral Event"}
-                details={
-                  " Join us, as we Unlock the Future of AI-Driven Event Management."
-                }
-                date={"13th Dec 2024, 7:00 PM"}
-                location={"Bayero University, Kano"} /></div>
-              <div className=""><EventCard logo={logo}
-                title={"Spiral Event"}
-                details={
-                  " Join us, as we Unlock the Future of AI-Driven Event Management."
-                }
-                date={"13th Dec 2024, 7:00 PM"}
-                location={"Bayero University, Kano"} /></div>
+                location={"Bayero University, Kano"} />
+              </div>
             </div>
 
           </section>

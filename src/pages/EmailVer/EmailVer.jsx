@@ -5,27 +5,14 @@ import OtpInput from "react-otp-input";
 const EmailVer = () => {
   const [otp, setOtp] = useState("");
 
-  const containerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    gap: "10px", // Space between inputs
-  };
+  const containerStyle = { display: "flex", justifyContent: "center", gap: "10px", };
 
   const inputStyle = {
-    width: "50px",
-    height: "50px",
-    fontSize: "18px",
-    textAlign: "center",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    outline: "none",
-    transition: "border-color 0.2s ease-in-out",
+    width: "50px", height: "50px", fontSize: "18px", textAlign: "center",
+    border: "1px solid #ccc", borderRadius: "5px", outline: "none", transition: "border-color 0.2s ease-in-out",
   };
 
-  const inputFocusStyle = {
-    borderColor: "#007BFF", // Change color on focus
-    boxShadow: "0 0 3px rgba(0, 123, 255, 0.5)",
-  };
+  const inputFocusStyle = { borderColor: "#007BFF", boxShadow: "0 0 3px rgba(0, 123, 255, 0.5)", };
 
   return (
     <div className="w-full h-full flex justify-center p-10 pb-20 pt-20">
@@ -45,51 +32,14 @@ const EmailVer = () => {
         </div>
 
         <div className="py-5">
-          <OtpInput
-            value={otp}
-            onChange={setOtp}
-            numInputs={4}
-            renderSeparator={<span>-</span>}
-            containerStyle={containerStyle}
-            inputStyle={inputStyle}
+          <OtpInput value={otp} onChange={setOtp} numInputs={4} renderSeparator={<span>-</span>}
+            containerStyle={containerStyle} inputStyle={inputStyle}
             renderInput={(props) => (
-              <input
-                {...props}
-                style={{
-                  ...inputStyle,
-                  ...(props.focused ? inputFocusStyle : {}),
-                }}
+              <input {...props} style={{ ...inputStyle, ...(props.focused ? inputFocusStyle : {}), }}
               />
             )}
           />
         </div>
-
-        {/* <div className="input div pt-5 justify-around flex">
-          <input
-            type="text"
-            name="num"
-            id="num"
-            className="w-[40px] h-[50px] px-2 border rounded-md"
-          />
-          <input
-            type="text"
-            name="num"
-            id="num"
-            className="w-[40px]  h-[50px] px-4 border rounded-md"
-          />
-          <input
-            type="text"
-            name="num"
-            id="num"
-            className="w-[40px] h-[50px] px-4 border rounded-md"
-          />
-          <input
-            type="text"
-            name="num"
-            id="num"
-            className="w-[40px] h-[50px] px-4 border rounded-md"
-          />
-        </div> */}
 
         <div className="pt-5">
           <button className="h-[50px] w-full text-white bg-pink-800 rounded-md font-semibold hover:bg-pink-700 shadow-md">

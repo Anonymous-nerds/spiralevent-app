@@ -1,177 +1,169 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Nav from "../../components/ui/Nav.jsx";
+import "./AddEvent.scss"
 import { Link } from "react-router-dom";
-import logo from "../../assets/spiraleE4.png"
-import { Image, MapPin, Edit, FileText, Tag, CloudUploadIcon, Calendar, BadgeDollarSign,Link2 } from "lucide-react";
+import logo from "../../assets/spiraleE4.png";
+import { Image, MapPin, Edit, FileText, Tag, Upload, Calendar, BadgeDollarSign, Link2 } from "lucide-react";
 
 const AddEvent = () => {
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setImagePreview(e.target.result);
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
-    <div>
+    <div className="AddEvent min-h-screen bg-gradient-to-br from-pink-50 to-white">
       <Nav />
-      <div>
-        <div className="sm:w-1/2 relative lg:w-full p-6 md:p-12 bg-neutral-100 flex items-center justify-center">
-          <form className=" lg:w-3/4 mx-auto bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-4">
-              <img src={logo} alt="" className=" App-logo h-8" />
-              <span>
-                Spiral
-                <span className="text-pink-900">Event</span>
-              </span>
-            </h3>
-
-
-            <div className=" ">
-            <h2 className="lg:text-3xl md:text-3xl sm:text-2xl font-bold m-8 text-white flex justify-center bg-pink-900 p-6 rounded">
-              Create Event
-              </h2>
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto overflow-hidden shadow-sm rounded-xl">
+          <div className="p-6 md:p-8">
+            {/* Header */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <img src={logo} alt="Spiral Logo" className="h-10 w-10 animate-spin-slow" />
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
+                Spiral<span className="text-pink-900">Event</span>
+              </h3>
             </div>
 
-            <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold flex items-center mb-1">
-                    <FileText className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Event Name:
+            {/* Title Banner */}
+            <div className="title">
+              <h2 className="text-2xl md:text-3xl font-bold text-white text-center">Create Event</h2>
+            </div>
+
+            <form className="space-y-6">
+              {/* Event Name & Category */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="group">
+                  <label className="labelStyles">
+                    <FileText className="w-4 h-4 mr-2" />
+                    Event Name
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Event Name"
-                    className="w-full text-sm border bg-pink-50  rounded-3xl p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                  />
+                  <input type="text" placeholder="Enter event name" className="inputStyles" />
                 </div>
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center ">
-                    <Tag className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Category:
+
+                <div className="group">
+                  <label className="labelStyles">
+                    <Tag className="w-4 h-4 mr-2" />
+                    Category
                   </label>
-                  <select
-                    className="w-full border bg-pink-50  rounded-3xl p-2 text-sm focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                    placeholder="Category"
-                  >
-                    <option value="" disabled>
-                      Category
-                    </option>
-                    <option className="text-pink-900" value="">
-                      Entertainment
-                    </option>
-                    <option className="text-pink-900" value="">
-                      Business
-                    </option>
-                    <option className="text-pink-900" value="">
-                      Social
-                    </option>
+                  <select className="inputStyles">
+                    <option value="" disabled selected>Select category</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="business">Business</option>
+                    <option value="social">Social</option>
                   </select>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
-                    <Edit className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Description:
+              {/* Description & Image Upload */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="group">
+                  <label className="labelStyles">
+                    <Edit className="w-4 h-4 mr-2" />
+                    Description
                   </label>
-                  <textarea
-                    placeholder="Description"
-                    rows="8"
-                    className="w-full rounded-md border bg-pink-50 shadow focus:ring-1 focus:ring-pink-900 focus:outline-none sm:text-sm"
-                  ></textarea>
+                  <textarea rows="8" placeholder="Describe your event..." className="DesInput" />
                 </div>
 
-                {/* Image Upload */}
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
-                    Event Logo/Banner
+                <div className="group">
+                  <label className="labelStyles">
+                    <Image className="w-4 h-4 mr-2" />
+                    Event Banner
                   </label>
-
-                  <div className="mt-1 w-full flex justify-center border-2 border-dashed border-gray-300 rounded-md p-8">
-                    <div className="relative mb-6 flex justify-center  ">
-                      <CloudUploadIcon className="absolute left-3 w-20 h-12 mb-12 justify-center text-gray-400 pointer-events-none" />
-                    </div>
-
-                    <button
-                      type="button"
-                      onclick="document.getElementById('imageUpload').click()"
-                      className="text-white text-sm bg-pink-900 mt-14 space-y-4 rounded-full hover:bg-pink-700 hover:scale-105 p-2"
-                    >
-                      Upload Image
-                    </button>
+                  <div className={`mt-1 border-2 border-dashed rounded-xl p-6 text-center
+                     ${imagePreview ? 'border-pink-500' : 'border-gray-300'}
+                      transition-all duration-200 hover:border-pink-500`}>
+                    {imagePreview ? (
+                      <div className="relative">
+                        <img src={imagePreview} alt="Preview" className="max-h-48 mx-auto rounded-lg" />
+                        <button
+                          type="button"
+                          onClick={() => setImagePreview(null)}
+                          className="absolute top-2 right-2 bg-pink-900/80 text-white p-1 rounded-full
+                        hover:bg-pink-700 transition-colors">
+                          ×
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        <Upload className="w-12 h-12 mx-auto text-gray-400" />
+                        <div className="flex flex-col items-center">
+                          <input type="file" id="imageUpload" className="hidden" accept="image/*" onChange={handleImageUpload} />
+                          <label
+                            htmlFor="imageUpload"
+                            className="bg-pink-900 text-white px-4 py-2 rounded-full cursor-pointer
+                           hover:bg-pink-700 transition-colors text-sm"
+                          >
+                            Choose Image
+                          </label>
+                          <p className="mt-2 text-xs text-gray-500">PNG, JPG up to 5MB</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
 
-              <label className="text-sm text-gray-700 font-semibold flex items-center">
-                <MapPin className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                Location:
-              </label>
-              <input
-                placeholder="Event location or Online"
-                className=" text-sm w-full border bg-pink-50 rounded-3xl p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-              />
+              {/* Location */}
+              <div className="group">
+                <label className="labelStyles">
+                  <MapPin className="w-4 h-4 mr-2" /> Location </label>
+                <input type="text" placeholder="Event location or Online" className="inputStyles"
+                />
+              </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold flex items-center mb-1">
-                    <Calendar className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Start Date:
+              {/* Dates */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="group">
+                  <label className="labelStyles">
+                    <Calendar className="w-4 h-4 mr-2" /> Start Date
                   </label>
-                  <input
-                    type="date"
-                    name="date"
-                    className="w-full border rounded-3xl bg-pink-50 p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                  />
+                  <input type="date" className="inputStyles" />
                 </div>
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
-                    <Calendar className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    End Date:
+
+                <div className="group">
+                  <label className="labelStyles">
+                    <Calendar className="w-4 h-4 mr-2" />End Date
                   </label>
-                  <input
-                    type="date"
-                    name="date"
-                    className="w-full border rounded-3xl bg-pink-50 p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                  />
+                  <input type="date" className="inputStyles" />
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold flex items-center mb-1">
-                    <BadgeDollarSign className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Ticket Price:
+              {/* Price & URL */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="group">
+                  <label className="labelStyles">
+                    <BadgeDollarSign className="w-4 h-4 mr-2" />Ticket Price
                   </label>
-                  <input
-                    className="w-full border text-sm rounded-3xl bg-pink-50 p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                    placeholder="Price"
-                  />
-
+                  <input type="number" placeholder="0.00" className="inputStyles" />
                 </div>
-                <div>
-                  <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
-                    <Link2 className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
-                    Link:
+
+                <div className="group">
+                  <label className="labelStyles">
+                    <Link2 className="w-4 h-4 mr-2" /> Event URL
                   </label>
-                  <input
-                    className="w-full border text-sm rounded-3xl bg-pink-50 p-2 focus:ring-1 focus:ring-pink-900 focus:outline-none"
-                    placeholder="Event URL (if any)"
-                  />
-                  
+                  <input type="url" placeholder="https://" className="inputStyles" />
                 </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className="w-1/3 text-sm mx-auto mt-6 bg-pink-900 text-white py-3 rounded-lg flex justify-center hover:bg-pink-700 hover:scale-105 shadow-lg transition-transform duration-300"
-            >
-              Create Event
-            </button>
-            <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
-              Don't have Event Logo/Banner?{" "}
-              <Link to="/login" className="text-pink-900 underline">
-                Create one
-              </Link>
-            </p>
-          </form>
+              {/* Submit Button */}
+              <div className="flex flex-col items-center gap-4 mt-8">
+                <button type="submit" className="submitBtn">Create Event</button>
+                <p className="text-sm text-gray-600">
+                  Need a banner?{" "}
+                  <Link to="/create-banner" className="text-pink-900 hover:text-pink-700 underline">
+                    Create one here
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
