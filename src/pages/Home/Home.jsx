@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../components/ui/Nav.jsx";
+import Nav from "../../components/ui/MainNav.jsx";
 import Footer from "../../components/ui/Footer.jsx";
 
 const Home = () => {
