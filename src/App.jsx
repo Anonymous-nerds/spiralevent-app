@@ -16,6 +16,7 @@ import TicketConfirmation from "./pages/TicketConfirmation/TicketConfirmation";
 import EventPage from "./pages/Event/Event";
 import EventRSVP from "./pages/EventRSVP/EventRSVP";
 import Ticket from "./pages/Ticket/Ticket";
+import FeedbackForm from "./pages/Feedback/Feedback";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/orders/:id" element={<Orders />} />
           <Route path="/ticket" element={<Ticket />} />
           <Route path="/ticket/confirmation" element={<TicketConfirmation />} />
+          <Route path="/feedback" element={<FeedbackForm />} />
         </Routes>
       </BrowserRouter>
     </div>
