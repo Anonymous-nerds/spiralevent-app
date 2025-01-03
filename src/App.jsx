@@ -11,6 +11,11 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import AddEvent from "./pages/AddEvent/AddEvent";
 import EditEvent from "./pages/EditEvent/EditEvent";
 import PreviewEvent from "./pages/PreviewEvent/PreviewEvent";
+import Orders from "./pages/Orders/Orders";
+import TicketConfirmation from "./pages/TicketConfirmation/TicketConfirmation";
+import EventPage from "./pages/Event/Event";
+import EventRSVP from "./pages/EventRSVP/EventRSVP";
+import Ticket from "./pages/Ticket/Ticket";
 
 function App() {
   return (
@@ -24,11 +29,16 @@ function App() {
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/email-ver" element={<EmailVer />} />
-          <Route path="/preview" element={<PreviewEvent />} />
-          {/* require auth */}
+          <Route path="event/preview" element={<PreviewEvent />} />
+          {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
-          <Route path="/addEvent" element={<AddEvent />} />
-          <Route path="/editEvent" element={<EditEvent />} />
+          <Route path="/event" element={<EventPage />} />
+          <Route path="/event/rsvp" element={<EventRSVP />} />
+          <Route path="/event/add" element={<AddEvent />} />
+          <Route path="/event/edit" element={<EditEvent />} />
+          <Route path="/orders/:id" element={<Orders />} />
+          <Route path="/ticket" element={<Ticket />} />
+          <Route path="/ticket/confirmation" element={<TicketConfirmation />} />
         </Routes>
       </BrowserRouter>
     </div>

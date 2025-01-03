@@ -18,7 +18,7 @@ const AddEvent = () => {
   };
 
   return (
-    <div className="AddEvent min-h-screen bg-gradient-to-br from-pink-50 to-white">
+    <div className="AddEvent min-h-screen bg-neutral-100">
       <Nav />
       <div className="container mx-auto px-4 py-3">
         <div className="max-w-4xl mx-auto overflow-hidden shadow-sm rounded-xl">

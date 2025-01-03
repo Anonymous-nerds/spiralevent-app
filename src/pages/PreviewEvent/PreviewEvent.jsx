@@ -9,7 +9,7 @@ import EventCard from "../../components/ui/EventCard.jsx"
 
 const PreviewEvent = () => {
   return (
-    <div className="PreviewEvent">
+    <div className="PreviewEvent bg-neutral-100">
       <div className="">
         <div className="">
           <Nav />
