@@ -22,6 +22,7 @@ import SubscriptionPlans from "./pages/Subscription/Subscription";
 import ReviewRatingWidget from "./pages/ReviewRatingWidget/ReviewRatingWidget";
 import EventReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 import PaymentForm from "./pages/Payment/Payment";
+import Gallery from "./pages/Gallery/Gallery"
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/subscription" element={<SubscriptionPlans />} />
           <Route path="/review" element={<ReviewRatingWidget />} />
           <Route path="/payment" element={<PaymentForm />} />
+          <Route path="/gallery" element={<Gallery />} />
           {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/event" element={<EventPage />} />
