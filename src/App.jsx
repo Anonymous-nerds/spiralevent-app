@@ -17,6 +17,8 @@ import EventPage from "./pages/Event/Event";
 import EventRSVP from "./pages/EventRSVP/EventRSVP";
 import Ticket from "./pages/Ticket/Ticket";
 import FeedbackForm from "./pages/Feedback/Feedback";
+import EventMediaGallery from "./pages/EventMedia/EventMedia";
+import SubscriptionPlans from "./pages/Subscription/Subscription";
 
 function App() {
   return (
@@ -30,13 +32,15 @@ function App() {
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/email-ver" element={<EmailVer />} />
-          <Route path="event/preview" element={<PreviewEvent />} />
+          <Route path="/event/preview" element={<PreviewEvent />} />
+          <Route path="/subscription" element={<SubscriptionPlans />} />
           {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/event" element={<EventPage />} />
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
           <Route path="/event/edit" element={<EditEvent />} />
+          <Route path="/event/media" element={<EventMediaGallery />} />
           <Route path="/orders/:id" element={<Orders />} />
           <Route path="/ticket" element={<Ticket />} />
           <Route path="/ticket/confirmation" element={<TicketConfirmation />} />
