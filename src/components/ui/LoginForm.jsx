@@ -76,7 +76,7 @@ const LoginForm = () => {
 
         <button type="submit" className="submitBtn">Login</button>
         <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
-          Don`t have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/register" className="text-pink-900 underline">Sign Up</Link>
         </p>
       </form>
