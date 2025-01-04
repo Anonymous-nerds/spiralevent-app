@@ -19,6 +19,9 @@ import Ticket from "./pages/Ticket/Ticket";
 import FeedbackForm from "./pages/Feedback/Feedback";
 import EventMediaGallery from "./pages/EventMedia/EventMedia";
 import SubscriptionPlans from "./pages/Subscription/Subscription";
+import ReviewRatingWidget from "./pages/ReviewRatingWidget/ReviewRatingWidget";
+import EventReviewsPage from "./pages/ReviewsPage/ReviewsPage";
+import PaymentForm from "./pages/Payment/Payment";
 
 function App() {
   return (
@@ -34,6 +37,8 @@ function App() {
           <Route path="/email-ver" element={<EmailVer />} />
           <Route path="/event/preview" element={<PreviewEvent />} />
           <Route path="/subscription" element={<SubscriptionPlans />} />
+          <Route path="/review" element={<ReviewRatingWidget />} />
+          <Route path="/payment" element={<PaymentForm />} />
           {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/event" element={<EventPage />} />
@@ -41,6 +46,7 @@ function App() {
           <Route path="/event/add" element={<AddEvent />} />
           <Route path="/event/edit" element={<EditEvent />} />
           <Route path="/event/media" element={<EventMediaGallery />} />
+          <Route path="/event/review" element={<EventReviewsPage />} />
           <Route path="/orders/:id" element={<Orders />} />
           <Route path="/ticket" element={<Ticket />} />
           <Route path="/ticket/confirmation" element={<TicketConfirmation />} />
