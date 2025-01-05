@@ -34,6 +34,7 @@ const RegisterForm = () => {
       e.preventDefault();
       setLoading(true);
 
+      //********************** set errors to empty object and border colors to gray **********************//
       const newErrors = {};
       const newBorderColors = { ...borderColors };
 
@@ -54,16 +55,21 @@ const RegisterForm = () => {
 
       //********************** if no errors, submit form **********************
       if (Object.keys(newErrors).length === 0) {
-        // console.log("Form submitted successfully", data);
+        // console.log("Form submitted successfully", data); //for debugging
         //********************** make a post request to the server **********************//
         await axios.post(`${API_DEV_LINK}/auth/register`, data).then((res) => {
           console.log("Response: ", res);
           console.log("Response data: ", res.data);
           toast.success(res.data.message);
           navigate("/auth/email-verification", { state: { email: res.data.email, userID: res.data.id } });
-        }).catch((err) => {
-          console.log(err);
-          toast.success(err.response.data.error);
+        }).catch((error) => {
+          console.log(error);
+          toast.error(error.response.data.error);
+          if (error.message) {
+            toast.error(error.message);
+          } else {
+            toast.error(error.response.data.error);
+          }
         });
       }
     } catch (error) { console.log(error); } finally { setLoading(false); }
@@ -71,7 +77,7 @@ const RegisterForm = () => {
 
   return (
     <div className="RegisterForm">
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-xl mt-10 p-8">
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-gray-50 rounded-2xl shadow-sm mt-10 p-8">
         <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-4">
           <img src={logo} alt="" className="App-logo h-8" />
           <span>Spiral <span className="text-pink-900">Event</span></span>

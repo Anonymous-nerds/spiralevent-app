@@ -45,9 +45,14 @@ const EmailVerification = () => {
         console.log("Response data: ", res.data);
         toast.success(res.data.message);
         navigate("/auth/login");
-      }).catch((err) => {
-        console.log(err);
-        toast.success(err.response.data.error);
+      }).catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.error);
+        if (error.message) {
+          toast.error(error.message);
+        } else {
+          toast.success(error.response.data.error);
+        }
       });
       //console.log(otp);
     } catch (error) { console.log(error); } finally { setLoading(false); }
