@@ -2,7 +2,7 @@
 //********** Login and register input styles   **********//
  
  .inputForm {
-    @apply w-full border rounded-lg p-2  focus:ring-pink-900 focus:outline-none;
+    @apply w-full border text-sm rounded-lg p-2  focus:ring-pink-900 focus:outline-none;
   }
 
   .submitBtn {

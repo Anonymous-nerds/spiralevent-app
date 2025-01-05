@@ -1,12 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home/Home";
 import Sample from "./pages/Sample/Sample";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import EmailVer from "./pages/EmailVer/EmailVer";
+import EmailVerification from "./pages/EmailVerification/EmailVerification";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import AddEvent from "./pages/AddEvent/AddEvent";
 import EditEvent from "./pages/EditEvent/EditEvent";
@@ -27,15 +28,16 @@ import Gallery from "./pages/Gallery/Gallery"
 function App() {
   return (
     <div className="App font-nunito-eb">
+      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sample" element={<Sample />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/email-ver" element={<EmailVer />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/forget-password" element={<ForgetPassword />} />
+          <Route path="/auth/reset-password" element={<ResetPassword />} />
+          <Route path="/auth/email-verification" element={<EmailVerification />} />
           <Route path="/event/preview" element={<PreviewEvent />} />
           <Route path="/subscription" element={<SubscriptionPlans />} />
           <Route path="/review" element={<ReviewRatingWidget />} />
