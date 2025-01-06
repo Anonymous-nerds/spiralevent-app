@@ -76,28 +76,26 @@ const EmailVerification = () => {
   }
 
   return (
-    <div className=" w-full flex flex-col lg:flex-row">
+    <div className="w-full flex flex-col lg:flex-row">
       <div className="w-full h-screen lg:w-1/2 p-6 md:p-12 bg-neutral-100 flex items-center justify-center">
         <form onSubmit={handleEmailValidation} className="max-w-lg mx-auto bg-white rounded-2xl shadow-sm m-8 p-8">
           <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-6">
             <img src={logo} alt="" className="App-logo h-8" />
-            <span>Spiral <span className="text-pink-900">Event</span>
+            <span>Spiral<span className="text-pink-900">Event</span>
             </span>
           </h3>
           <div className="smallerdiv">
             <div>
-              <button className="text-2xl bg-pink-900 text-white hover:text-gray-100 rounded-full p-2 duration-200">
-                <Link to={"/register"}>
-                  <FaArrowLeft /></Link>
-
+              <button className="text-xl bg-pink-900 text-white hover:text-gray-100 rounded-full p-2 duration-200">
+                <Link to={"/register"}> <FaArrowLeft /></Link>
               </button>
             </div>
 
             <div className="words py-5 px-6">
-              <h3 className="text-4xl text-gray-800 font-bold">
+              <h3 className="text-2xl text-gray-800 font-bold">
                 Email Verification
               </h3>
-              <h2 className="text-gray-600 pt-5 font-semibold">
+              <h2 className="text-gray-600 pt-2">
                 We sent a code to{" "}
                 <span className="font-bold text-black">
                   {email}
@@ -119,7 +117,7 @@ const EmailVerification = () => {
             </div>
 
             <div className="pt-5 flex justify-center">
-              <button type="submit" className="h-[50px] w-2/3  text-white bg-pink-900 rounded-md font-semibold hover:bg-pink-700 hover:scale-105 shadow-md">
+              <button type="submit" className="h-[40px] w-2/3 text-sm text-white bg-pink-900 rounded-md font-semibold hover:bg-pink-700 hover:scale-105 shadow-md">
 
                 {loading ? "Verifying..." : "Verify"}
               </button>

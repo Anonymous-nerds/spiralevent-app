@@ -68,7 +68,7 @@ const ForgetPassword = () => {
 
   return (
     <div className="ForgetPassword">
-      <div className=" w-full flex flex-col lg:flex-row">
+      <div className="w-full flex flex-col lg:flex-row">
         <div className="w-full h-screen lg:w-1/2 p-6 md:p-12 bg-neutral-100 flex items-center justify-center">
           <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white rounded-2xl shadow-sm m-8 p-8">
             <h3 className="text-2xl md:text-2xl font-bold flex justify-center gap-2 text-gray-800 mb-10">
@@ -83,8 +83,8 @@ const ForgetPassword = () => {
             </div>
 
             <div className="text">
-              <h2 className="text-4xl font-semibold text-gray-800 py-5">Forgot password? </h2>
-              <p className="text-gray-700"> Enter your email to recieve a verification code </p>
+              <h2 className="text-3xl font-semibold text-gray-800 py-5 pb-2">Forgot password? </h2>
+              <p className="text-gray-700 text-sm"> Enter your email to recieve a verification code </p>
             </div>
 
             <div>
@@ -96,8 +96,9 @@ const ForgetPassword = () => {
                 className={`forgetInput ${borderColors.email}`} value={data.email}
                 onChange={(e) => setData({ ...data, email: e.target.value })} autoCorrect="on" autoCapitalize="off"
                 autoComplete="email" />
-              {errors.email && (<span className="text-red-500 text-sm">{errors.email}</span>)}
+              <div className="">{errors.email && (<span className="text-red-500 w-full text-sm">{errors.email}</span>)}</div>
             </div>
+            <div className=""></div>
             <div className="p-5 items-center px-4">
               <button type="submit" disabled={loading} className="resetBtn">{loading ? "Processing..." : "Reset"}</button>
             </div>
