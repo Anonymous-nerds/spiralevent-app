@@ -93,22 +93,18 @@ const LoginForm = () => {
             <UserCircle className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Email :
           </label>
-          <input
-            type="email" placeholder="Enter Email"
-            className={`inputForm ${borderColors.email}`}
+          <input type="email" placeholder="Enter Email" className={`inputForm ${borderColors.email}`}
             value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })}
-          />
+            autoCorrect="on" autoCapitalize="off" autoComplete="email" />
           {errors.email && (<span className="text-red-500 text-sm">{errors.email}</span>)}
+
           <label className="text-sm text-gray-700 font-semibold mb-1 flex items-center">
             <Lock className="w-4 h-5 text-gray-800 mr-2 flex items-center" />
             Password:
           </label>
-          <input
-            type="password" placeholder="Enter Password"
-            className={`inputForm ${borderColors.password}`}
-            value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
-          />
+          <input type="password" placeholder="Enter Password" className={`inputForm ${borderColors.password}`}
+            value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })}
+            autoCorrect="on" autoComplete="password" />
           {errors.password && (<span className="text-red-500 text-sm">{errors.password}</span>)}
         </div>
 
