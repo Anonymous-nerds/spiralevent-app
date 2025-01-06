@@ -108,7 +108,7 @@ const LoginForm = () => {
           {errors.password && (<span className="text-red-500 text-sm">{errors.password}</span>)}
         </div>
 
-        <button type="submit" className="submitBtn">{loading ? "Logging in..." : "Login"}</button>
+        <button type="submit" disabled={loading} className="submitBtn">{loading ? "Logging in..." : "Login"}</button>
         <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
           Don`t have an account?{" "}
           <Link to="/register" className="text-pink-900 underline">Sign Up</Link>

@@ -8,11 +8,11 @@ import Logo from "../../assets/spiraleE4.png";
 
 const navigation = [
   { name: "Overview", href: "/dashboard" },
-  { name: "Invoice", href: "/Invoice" },
-  { name: "Estimates", href: "/Estimates" },
-  { name: "Expanses", href: "/Expanses" },
-  { name: "Customers", href: "/Customers" },
-  { name: "Business", href: "/Business" },
+  { name: "Events", href: "/events" },
+  { name: "Buy Ticket", href: "/ticket" },
+  { name: "Create an Event", href: "/Expanses" },
+  { name: "Pirce", href: "/Customers" },
+  { name: "Banner", href: "/Banner" },
   { name: "Account", href: "/Account" },
 ];
 

@@ -93,13 +93,13 @@ const ForgetPassword = () => {
                 Email:
               </label>
               <input type="email" id="email" name="email" placeholder="e.g: example@gmail.com"
-                className={`forgetInput ${borderColors.email}}`} value={data.email}
+                className={`forgetInput ${borderColors.email}`} value={data.email}
                 onChange={(e) => setData({ ...data, email: e.target.value })} autoCorrect="on" autoCapitalize="off"
                 autoComplete="email" />
               {errors.email && (<span className="text-red-500 text-sm">{errors.email}</span>)}
             </div>
             <div className="p-5 items-center px-4">
-              <button type="submit" className="resetBtn">{loading ? "Processing..." : "Reset"}</button>
+              <button type="submit" disabled={loading} className="resetBtn">{loading ? "Processing..." : "Reset"}</button>
             </div>
           </form>
         </div>

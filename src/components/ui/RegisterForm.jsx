@@ -128,7 +128,7 @@ const RegisterForm = () => {
           {errors.password && (<span className="text-red-500 text-sm">{errors.password}</span>)}
         </div>
 
-        <button type="submit" className="submitBtn">{loading ? "Registering..." : "Register"}</button>
+        <button type="submit" disabled={loading} className="submitBtn">{loading ? "Registering..." : "Register"}</button>
         <p className="text-sm text-gray-600 flex gap-2 justify-center mt-4">
           Already have an account?{" "}
           <Link to="/auth/login" className="text-pink-900 underline">Log in</Link>

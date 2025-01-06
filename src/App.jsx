@@ -24,6 +24,7 @@ import ReviewRatingWidget from "./pages/ReviewRatingWidget/ReviewRatingWidget";
 import EventReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 import PaymentForm from "./pages/Payment/Payment";
 import Gallery from "./pages/Gallery/Gallery"
+import CreateBanner from "./pages/CreateBanner/CreateBanner";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/review" element={<ReviewRatingWidget />} />
           <Route path="/payment" element={<PaymentForm />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/createBanner" element={<CreateBanner />} />
           {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/event" element={<EventPage />} />
