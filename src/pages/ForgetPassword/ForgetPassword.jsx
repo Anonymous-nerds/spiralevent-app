@@ -43,8 +43,10 @@ const ForgetPassword = () => {
       setErrors(newErrors);
       setBorderColors(newBorderColors);
 
+      //  console.log("Output", newErrors);
+      // console.log(Object.keys(newErrors));
       if (Object.keys(newErrors).length === 0) {
-        console.log("Form submitted successfully", data); //for debugging
+        //console.log("Form submitted successfully", data); //for debugging
         // Proceed with form submission logic
         //********************** make a post request to the server **********************//
         await axios.post(`${API_DEV_LINK}/forgot-password`, data).then((res) => {
