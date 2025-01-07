@@ -26,6 +26,8 @@ import PaymentForm from "./pages/Payment/Payment";
 import Gallery from "./pages/Gallery/Gallery"
 import CreateBanner from "./pages/CreateBanner/CreateBanner";
 import ForgetPasswordMessage from "./pages/ForgetPasswordMessage/ForgetPasswordMessage";
+import UserUpdate from "./pages/UserUpdate/UserUpdate";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
           <Route path="/createBanner" element={<CreateBanner />} />
           {/* *********** require auth *********** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
+          <Route path="/user/update" element={<UserUpdate />} />
+          <Route path="/user/profile" element={<ProfilePage />} />
           <Route path="/event" element={<EventPage />} />
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
