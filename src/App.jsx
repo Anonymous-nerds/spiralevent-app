@@ -25,6 +25,7 @@ import EventReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 import PaymentForm from "./pages/Payment/Payment";
 import Gallery from "./pages/Gallery/Gallery"
 import CreateBanner from "./pages/CreateBanner/CreateBanner";
+import ForgetPasswordMessage from "./pages/ForgetPasswordMessage/ForgetPasswordMessage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/forget-password" element={<ForgetPassword />} />
+          <Route path="/auth/forget-password/success" element={<ForgetPasswordMessage />} />
           <Route path="/auth/reset-password/:token" element={<ResetPassword />} />
           <Route path="/auth/email-verification" element={<EmailVerification />} />
           <Route path="/event/preview" element={<PreviewEvent />} />
