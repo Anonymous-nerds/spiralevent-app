@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Upload, X, Image as ImageIcon, Film, Plus } from 'lucide-react';
 import Image from "../../assets/dev-fest.jpg";
+import Navigation from "../../components/ui/Navigation";
 import Nav from '../../components/ui/MainNav';
 
 const EventMediaGallery = () => {
@@ -78,9 +79,9 @@ const EventMediaGallery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100 p-6">
-      <Nav />
-      <div className="max-w-6xl mx-auto">
+    <div className="flex min-h-screen bg-neutral-100">
+      <Navigation />
+      <div className="max-w-6xl mx-auto flex-1 md:ml-64 px-10 py-32">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-pink-900 mb-2">Event Media Gallery</h1>
           <p className="text-gray-600">Upload and manage your event photos and videos</p>

@@ -3,6 +3,7 @@ import BannerForm from '../../components/BannerForm';
 import BannerDisplay from '../../components/BannerDisplay';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Nav from '../../components/ui/MainNav';
+import Navigation from "../../components/ui/Navigation";
 import toast from 'react-hot-toast';
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
@@ -30,9 +31,9 @@ const CreateBanner = () => {
   };
 
   return (
-    <div className="">
-      <div className="min-h-screen bg-neutral-100 flex flex-col items-center justify-center p-4">
-        <Nav />
+    <div className="flex min-h-screen bg-neutral-100">
+      <Navigation />
+      <div className="flex-1 md:ml-64 py-40 md:py-40 md:px-32">
         <h1 className="text-4xl font-bold text-pink-600 mb-8">Need a banner? Create one here!</h1>
         <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-6">
           <BannerForm onSubmit={generateBanner} isLoading={isLoading} />

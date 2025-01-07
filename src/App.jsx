@@ -32,7 +32,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 function App() {
   return (
     <div className="App font-nunito-eb">
-      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
+      <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,7 +49,7 @@ function App() {
           <Route path="/payment" element={<PaymentForm />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/createBanner" element={<CreateBanner />} />
-          {/* *********** require auth *********** */}
+          {/* ********************** Require Auth ********************** */}
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />

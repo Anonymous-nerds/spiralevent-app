@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import Nav from '../../components/ui/MainNav';
+import Navigation from "../../components/ui/Navigation";
 
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
@@ -23,9 +24,9 @@ const RSVPForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100 p-4 md:p-8">
-      <Nav />
-      <div className="max-w-2xl mx-auto">
+    <div className="flex min-h-screen bg-neutral-100">
+      <Navigation />
+      <div className="py-32  mx-auto flex-1 md:ml-64 px-16">
         {/* Event Summary */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <h1 className="text-2xl font-bold mb-4">RSVP - GitHub Universe 2023</h1>

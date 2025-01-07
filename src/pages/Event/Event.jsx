@@ -1,13 +1,15 @@
 import React from 'react';
 import Image from "../../assets/pretty.png"
+import Navigation from "../../components/ui/Navigation";
 import { Calendar, MapPin, Clock, Share2, Users } from 'lucide-react';
-import Nav from '../../components/ui/MainNav';
+
 
 const EventPage = () => {
   return (
-    <div className="">
-      <div className="min-h-screen bg-neutral-100">
-        <Nav />
+    <div className="flex min-h-screen bg-neutral-100">
+      <Navigation />
+      <div className="flex-1 md:ml-64">
+
         {/* Hero Section */}
         <div className="relative h-96">
           <img
