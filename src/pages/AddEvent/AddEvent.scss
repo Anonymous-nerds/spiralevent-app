@@ -10,7 +10,7 @@
   }
 
   .inputStyles {
-    @apply mt-1 w-full rounded-xl border border-gray-300 outline-none bg-pink-50/50 p-3 text-sm
+    @apply mt-1 w-full rounded-xl border  outline-none bg-pink-50/50 p-3 text-sm
     focus:border-pink-500 focus:ring-pink-500 transition-all duration-200
     hover:bg-pink-50 ;
   }

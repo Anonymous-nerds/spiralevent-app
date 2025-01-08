@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import BannerForm from '../../components/BannerForm';
 import BannerDisplay from '../../components/BannerDisplay';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import Nav from '../../components/ui/MainNav';
 import Navigation from "../../components/ui/Navigation";
 import toast from 'react-hot-toast';
+import LoginIn from '../../auth/isLoginIn';
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
@@ -32,6 +32,7 @@ const CreateBanner = () => {
 
   return (
     <div className="flex min-h-screen bg-neutral-100">
+      <LoginIn />
       <Navigation />
       <div className="flex-1 md:ml-64 py-40 md:py-40 md:px-32">
         <h1 className="text-4xl font-bold text-pink-600 mb-8">Need a banner? Create one here!</h1>
