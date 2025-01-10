@@ -52,7 +52,7 @@ function App() {
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />
-          <Route path="/event/:eventUUID" element={<PreviewEvent />} />
+          <Route path="/event/:eventCode" element={<PreviewEvent />} />
           <Route path="/event/view" element={<EventPage />} />
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
