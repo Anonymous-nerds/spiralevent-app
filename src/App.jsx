@@ -43,7 +43,6 @@ function App() {
           <Route path="/auth/forget-password/success" element={<ForgetPasswordMessage />} />
           <Route path="/auth/reset-password/:token" element={<ResetPassword />} />
           <Route path="/auth/email-verification" element={<EmailVerification />} />
-          <Route path="/event/preview" element={<PreviewEvent />} />
           <Route path="/subscription" element={<SubscriptionPlans />} />
           <Route path="/review" element={<ReviewRatingWidget />} />
           <Route path="/payment" element={<PaymentForm />} />
@@ -53,7 +52,8 @@ function App() {
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />
-          <Route path="/event" element={<EventPage />} />
+          <Route path="/event/:eventUUID" element={<PreviewEvent />} />
+          <Route path="/event/view" element={<EventPage />} />
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
           <Route path="/event/edit" element={<EditEvent />} />

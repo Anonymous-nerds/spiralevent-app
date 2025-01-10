@@ -3,16 +3,19 @@ import Navigation from "../../components/ui/Navigation";
 import "./AddEvent.scss"
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/spiraleE4.png";
-import { Image, MapPin, Edit, FileText, Tag, Upload, Calendar, BadgeDollarSign, Link2 } from "lucide-react";
+import {
+  Image, MapPin, Edit, FileText, Tag, TypeOutline, Upload, Users, Calendar, BadgeDollarSign, Link2
+} from "lucide-react";
 import api from "../../../utils/api"
-import axios from "axios";
+//import axios from "axios";
 import { toast } from "react-hot-toast";
+import LoginIn from "../../auth/isLoginIn";
 
 
 const AddEvent = () => {
 
   //********************** Variables from env file **********************//
-  const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
+  // const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
   // const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
 
   //********************** state variables **********************//
@@ -25,17 +28,16 @@ const AddEvent = () => {
 
   //********************** border colors **********************//
   const [borderColors, setBorderColors] = useState({
-    eventName: "border-gray-300", description: "border-gray-300",
-    location: "border-gray-300", category: "border-gray-300", eventType: "border-gray-300",
-    startTime: "border-gray-300", endTime: "border-gray-300", ticketPrice: "border-gray-300",
-    tags: "border-gray-300", maxAttendees: "border-gray-300",
+    eventName: "border-gray-300", description: "border-gray-300", location: "border-gray-300",
+    category: "border-gray-300", eventType: "border-gray-300", ticketPrice: "border-gray-300",
+    tags: "border-gray-300", maxAttendees: "border-gray-300", eventURL: "border-gray-300",
   });
 
   //********************** form data **********************//
   const [data, setData] = useState({
     eventName: "", description: "", startDate: "", endDate: "",
     location: "", category: "", eventType: "", ticketPrice: "",
-    eventUrl: "", tags: "", maxAttendees: "", startTime: "", endTime: "",
+    eventURL: "", tags: [], maxAttendees: "",
   });
 
   //********************** handle file upload **********************//
@@ -63,6 +65,22 @@ const AddEvent = () => {
     setData(prev => ({ ...prev, [name]: value }));
   };
 
+  //********************** handle tag changes **********************//
+  const handleTagInput = (e) => {
+    if (e.key === "Enter" || e.key === ",") {
+      e.preventDefault();
+      const newTag = e.target.value.trim();
+      if (newTag && !data.tags.includes(newTag)) {
+        setData((prev) => ({ ...prev, tags: [...prev.tags, newTag], }));
+        e.target.value = "";
+      }
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    setData((prev) => ({ ...prev, tags: prev.tags.filter((tag) => tag !== tagToRemove), }));
+  };
+
   //********************** handle form submission **********************//
   const handleSubmit = async (e) => {
     // console.log("click") // for debugging
@@ -86,50 +104,41 @@ const AddEvent = () => {
       setBorderColors(newBorderColors);
 
       //********************** if no errors, submit form **********************//
-      // if (Object.keys(newErrors).length === 0) {
-      //   const eventData = { ...formData, eventBanner: eventBannerBuffer, ContentType: contentType };
+      console.log("Errors: ", newErrors); // for debugging
+      if (Object.keys(newErrors).length === 0) {
+        const formData = new FormData();
+        Object.entries(data).forEach(([key, value]) => {
+          if (key === "tags") { formData.append(key, JSON.stringify(value)); }
+          else { formData.append(key, value); }
+        });
+        // formData.append('eventName', data.eventName);
+        // formData.append('description', data.description);
+        // formData.append('startDate', data.startDate);
+        // formData.append('endDate', data.endDate);
+        // formData.append('startTime', data.startTime);
+        // formData.append('location', data.location);
+        // formData.append('category', data.category);
+        // formData.append('eventType', data.eventType);
+        // formData.append('ticketPrice', data.ticketPrice);
+        // formData.append('eventURL', data.eventURL);
+        // formData.append('tags', data.tags);
+        // formData.append('startTime', data.startTime);
+        // formData.append('endTime', data.endTime);
+        // formData.append('maxAttendees', data.maxAttendees);
+        formData.append('ContentType', contentType);
+        formData.append('eventBanner', eventBannerBuffer);
 
-      //   //********************** make a post request to the server **********************//
-      //   const response = await api.post(`/events/add`, eventData);
+        // console.log("Form Data: ", formData); // for debugging 
 
-      //   if (response.data) {
-      //     toast.success('Event created successfully!');
-      //     navigate("/event/preview");
-      //   }
-      // }
-      // const eventData = { ...formData, eventBanner: eventBannerBuffer, ContentType: contentType };
+        //********************** make a post request to the server **********************//
+        const response = await api.post(`/events/add`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data', },
+        });
+        if (response.data) { toast.success('Event created successfully!'); navigate("/event/preview"); }
 
-      const formData = new FormData();
-      formData.append('eventName', data.eventName);
-      formData.append('description', data.description);
-      formData.append('startDate', data.startDate);
-      formData.append('endDate', data.endDate);
-      formData.append('startTime', data.startTime);
-      formData.append('location', data.location);
-      formData.append('category', data.category);
-      formData.append('eventType', data.eventType);
-      formData.append('ticketPrice', data.ticketPrice);
-      formData.append('eventUrl', data.eventUrl);
-      formData.append('tags', data.tags);
-      formData.append('startTime', data.startTime);
-      formData.append('endTime', data.endTime);
-      formData.append('maxAttendees', data.maxAttendees);
-      formData.append('ContentType', contentType);
-      formData.append('eventBanner', eventBannerBuffer);
-
-      console.log("Form Data: ", formData); // for debugging 
-
-      //********************** make a post request to the server **********************//
-      const response = await api.post(`/events/add`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      if (response.data) {
-        toast.success('Event created successfully!');
-        navigate("/event/preview");
       }
+
+
     } catch (error) {
       console.log("Error creating event:", error);
       toast.error(error.response?.data?.error || 'Failed to create event');
@@ -138,6 +147,7 @@ const AddEvent = () => {
 
   return (
     <div className="AddEvent flex min-h-screen bg-neutral-100">
+      <LoginIn />
       <Navigation />
       {/* Main Content */}
       <div className="flex-1 md:ml-64">
@@ -159,7 +169,7 @@ const AddEvent = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Event Name & Category */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-3 gap-6">
                   <div className="group">
                     <label className="labelStyles">
                       <FileText className="w-4 h-4 mr-2" /> Event Name
@@ -181,6 +191,20 @@ const AddEvent = () => {
                     </select>
                     {errors.category && (<span className="text-red-500 text-sm">{errors.category}</span>)}
                   </div>
+
+                  <div className="group">
+                    <label className="labelStyles">
+                      <TypeOutline className="w-4 h-4 mr-2" /> Event Type
+                    </label>
+                    <select name="eventType" className="inputStyles" value={data.eventType} onChange={handleInputChange}>
+                      <option value="">Select Type</option>
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                      {/* <option value="social">Social</option> */}
+                    </select>
+                    {errors.eventType && (<span className="text-red-500 text-sm">{errors.eventType}</span>)}
+                  </div>
+
                 </div>
 
                 {/* Description & Image Upload */}
@@ -257,28 +281,9 @@ const AddEvent = () => {
                     {errors.endDate && (<span className="text-red-500 text-sm">{errors.endDate}</span>)}
                   </div>
                 </div>
-                {/* time */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="group">
-                    <label className="labelStyles">
-                      <Calendar className="w-4 h-4 mr-2" /> Start Time
-                    </label>
-                    <input type="time" name="startTime" className="inputStyles" value={data.startTime}
-                      onChange={handleInputChange} />
-                    {errors.startTime && (<span className="text-red-500 text-sm">{errors.startTime}</span>)}
-                  </div>
-                  <div className="group">
-                    <label className="labelStyles">
-                      <Calendar className="w-4 h-4 mr-2" /> End Time/Closing
-                    </label>
-                    <input type="time" name="endTime" className="inputStyles" value={data.endTime}
-                      onChange={handleInputChange} />
-                    {errors.endTime && (<span className="text-red-500 text-sm">{errors.endTime}</span>)}
-                  </div>
-                </div>
 
                 {/* Price & URL */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-3 gap-6">
                   <div className="group">
                     <label className="labelStyles">
                       <BadgeDollarSign className="w-4 h-4 mr-2" /> Ticket Price
@@ -290,13 +295,44 @@ const AddEvent = () => {
 
                   <div className="group">
                     <label className="labelStyles">
+                      <Users className="w-4 h-4 mr-2" /> Max Attendence
+                    </label>
+                    <input type="number" name="maxAttendees" placeholder="0.00" className="inputStyles"
+                      value={data.maxAttendees} onChange={handleInputChange} />
+                    {errors.maxAttendees && (<span className="text-red-500 text-sm">{errors.maxAttendees}</span>)}
+                  </div>
+
+                  <div className="group">
+                    <label className="labelStyles">
                       <Link2 className="w-4 h-4 mr-2" /> Event URL
                     </label>
-                    <input type="url" name="eventUrl" placeholder="https://" className="inputStyles"
-                      value={data.eventUrl} onChange={handleInputChange} />
-                    {errors.eventUrl && (<span className="text-red-500 text-sm">{errors.eventUrl}</span>)}
+                    <input type="url" name="eventURL" placeholder="https://" className="inputStyles"
+                      value={data.eventURL} onChange={handleInputChange} />
+                    {errors.eventURL && (<span className="text-red-500 text-sm">{errors.eventURL}</span>)}
                   </div>
                 </div>
+
+                {/* Tags Input */}
+                <div className="group">
+                  <label className="labelStyles">
+                    <Tag className="w-4 h-4 mr-2" /> Tags
+                  </label>
+                  <input type="text" name="tagsInput" placeholder="Enter tags and press Enter" className="inputStyles"
+                    onKeyDown={handleTagInput} />
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {data.tags.map((tag) => (
+                      <span key={tag}
+                        className="bg-pink-200 text-pink-800 px-3 py-1 rounded-full text-sm flex items-center gap-2">
+                        {tag}
+                        <button type="button" onClick={() => handleRemoveTag(tag)} className="text-pink-900 hover:text-pink-700">
+                          ×
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                  {errors.tags && <span className="text-red-500 text-sm">{errors.tags}</span>}
+                </div>
+
 
                 {/* Submit Button */}
                 <div className="flex flex-col items-center gap-4 mt-8">
