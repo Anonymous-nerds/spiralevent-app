@@ -134,8 +134,7 @@ const AddEvent = () => {
         const response = await api.post(`/events/add`, formData, {
           headers: { 'Content-Type': 'multipart/form-data', },
         });
-        if (response.data) { toast.success('Event created successfully!'); navigate("/event/preview"); }
-
+        if (response.data) { toast.success('Event created successfully!'); navigate(`/event/${response.data.data.eventCode}`); }
       }
 
 
@@ -267,7 +266,7 @@ const AddEvent = () => {
                     <label className="labelStyles">
                       <Calendar className="w-4 h-4 mr-2" /> Start Date
                     </label>
-                    <input type="date" name="startDate" className="inputStyles" value={data.startDate}
+                    <input type="datetime-local" name="startDate" className="inputStyles" value={data.startDate}
                       onChange={handleInputChange} />
                     {errors.startDate && (<span className="text-red-500 text-sm">{errors.startDate}</span>)}
                   </div>
@@ -276,7 +275,7 @@ const AddEvent = () => {
                     <label className="labelStyles">
                       <Calendar className="w-4 h-4 mr-2" /> End Date
                     </label>
-                    <input type="date" name="endDate" className="inputStyles" value={data.endDate}
+                    <input type="datetime-local" name="endDate" className="inputStyles" value={data.endDate}
                       onChange={handleInputChange} />
                     {errors.endDate && (<span className="text-red-500 text-sm">{errors.endDate}</span>)}
                   </div>
