@@ -1,37 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "./PreviewEvent.scss";
 import Navigation from "../../components/ui/Navigation";
-import { CalendarMinusIcon, LocateIcon, Tickets } from "lucide-react";
+import { CalendarMinusIcon, LocateIcon, Tickets, ImageUpscale } from "lucide-react";
 import EventCard from "../../components/ui/EventCard.jsx";
 import LoginIn from "../../auth/isLoginIn.jsx";
 import api from "../../../utils/api.js";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // Loading skeleton component
 import LoadingEvent from "../../components/LoadingEvent.jsx";
 
 const PreviewEvent = () => {
+  //********************** state variables **********************//
   const { eventCode } = useParams();
   const [events, setEvents] = useState([]);
   const [relatedEvents, setRelatedEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingRelated, setIsLoadingRelated] = useState(false);
 
-  // Fetch event details
+  //********************** Fetch event details **********************//
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true); //set loading state to be true
     api.get(`/events/${eventCode}`)
-      .then(response => {
-        setEvents(response.data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching events:', error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .then(response => { setEvents(response.data.data); })
+      .catch(error => { console.error('Error fetching events:', error); })
+      .finally(() => { setIsLoading(false); });
   }, [eventCode]);
 
-  // Fetch related events only when events[0] exists and has tags
+  //************  Fetch related events only when events[0] exists and has tags ************ //
   useEffect(() => {
     if (events.length > 0 && events[0].tags) {
       setIsLoadingRelated(true);
@@ -39,17 +34,11 @@ const PreviewEvent = () => {
       api.get(`/events/get/tags?tags=${tagsQuery}`)
         .then(response => {
           const filteredEvents = response.data.data.filter(
-            relatedEvent => relatedEvent.eventCode !== eventCode
-          );
-          console.log(filteredEvents)
+            relatedEvent => relatedEvent.eventCode !== eventCode && relatedEvent.eventType == "public");
+          // console.log(filteredEvents) // for debugging
           setRelatedEvents(filteredEvents);
-        })
-        .catch(error => {
-          console.error('Error fetching related events:', error);
-        })
-        .finally(() => {
-          setIsLoadingRelated(false);
-        });
+        }).catch(error => { console.error('Error fetching related events:', error); })
+        .finally(() => { setIsLoadingRelated(false); });
     }
   }, [events, eventCode]);
 
@@ -73,6 +62,13 @@ const PreviewEvent = () => {
                     {event.status}
                   </div>
                 </div>
+
+                {/* Event Images Link */}
+                <div className="mt-10 text-center">
+                  <button className="text-sm p-3 bg-pink-600 text-white px-10 rounded-full">
+                    <Link to={`/event/media/${eventCode}`} className="flex gap-2"><span>View Event</span>  <span><ImageUpscale size={15} /></span> </Link>
+                  </button>
+                </div>
               </div>
 
               {/* Event Details */}
@@ -88,21 +84,29 @@ const PreviewEvent = () => {
                   </span>
                 </div>
                 <button className="buyBtn flex gap-2">
-                  Buy Ticket ({event.ticketPrice}) <Tickets size={20} />
+                  Buy Ticket (₦ {event.ticketPrice}) <Tickets size={20} />
                 </button>
 
                 {/* Date and Location */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <CalendarMinusIcon className="iconStyle" />
-                    <p className="text-lg font-semibold text-gray-800">
-                      {event.startDate ? new Date(event.startDate).toLocaleDateString() : 'TBA'}
+                    <p className="text-sm  text-gray-800">
+                      {event.startDate ?
+                        new Intl.DateTimeFormat('en-US', {
+                          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric',
+                          minute: 'numeric', hour12: true
+                        }).format(new Date(event.startDate)) : 'TBA'}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
                     <CalendarMinusIcon className="iconStyle" />
-                    <p className="text-lg font-semibold text-gray-800">
-                      {event.endDate ? new Date(event.endDate).toLocaleDateString() : 'TBA'}
+                    <p className="text-sm  text-gray-800">
+                      {event.endDate ?
+                        new Intl.DateTimeFormat('en-US', {
+                          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric',
+                          minute: 'numeric', hour12: true
+                        }).format(new Date(event.endDate)) : 'TBA'}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -116,6 +120,7 @@ const PreviewEvent = () => {
                   <h2 className="text-xl font-bold text-gray-900 mb-3">About Event</h2>
                   <p className="text-gray-600 text-sm leading-relaxed">{event.description}</p>
                 </div>
+
               </div>
             </div>
 

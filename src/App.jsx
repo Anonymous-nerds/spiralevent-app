@@ -57,7 +57,7 @@ function App() {
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
           <Route path="/event/edit" element={<EditEvent />} />
-          <Route path="/event/media" element={<EventMediaGallery />} />
+          <Route path="/event/media/:eventCode" element={<EventMediaGallery />} />
           <Route path="/event/review" element={<EventReviewsPage />} />
           <Route path="/orders/:id" element={<Orders />} />
           <Route path="/ticket" element={<Ticket />} />
