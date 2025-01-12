@@ -32,6 +32,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 function App() {
   return (
     <div className="App font-nunito-eb">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.7.0/css/pro.min.css" />
       <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <BrowserRouter>
         <Routes>
