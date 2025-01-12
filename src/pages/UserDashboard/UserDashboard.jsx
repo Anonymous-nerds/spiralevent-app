@@ -1,11 +1,14 @@
 import React from "react";
-import Nav from "../../components/ui/Nav.jsx";
-
+import DarkNav from "../../components/ui/DarkNav.jsx";
+import Dash_Cont from "../../components/ui/dashboard_content.jsx";
 const UserDashboard = () => {
+  let inLineStyle = {
+      backgroundColor : "#d9d9d9"
+  }; 
   return (
-    <div>
-      <Nav />
-      <div className="UserDashboard">UserDashboard</div>
+    <div style = {inLineStyle}>
+      <DarkNav />
+      <Dash_Cont />
     </div>
   );
 };
