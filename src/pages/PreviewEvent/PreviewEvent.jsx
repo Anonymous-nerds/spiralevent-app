@@ -66,8 +66,19 @@ const PreviewEvent = () => {
                 {/* Event Images Link */}
                 <div className="mt-10 text-center">
                   <button className="text-sm p-3 bg-pink-600 text-white px-10 rounded-full">
-                    <Link to={`/event/media/${eventCode}`} className="flex gap-2"><span>View Event</span>  <span><ImageUpscale size={15} /></span> </Link>
+                    <Link to={`/event/media/${event.id}`} className="flex gap-2"><span>View Event</span>  <span><ImageUpscale size={15} /></span> </Link>
                   </button>
+                </div>
+
+                {/* Event Attendee */}
+                <div className="mt-5">
+                  <h3 className="text-lg font-bold">Attendees ({event.Attendees.length})</h3>
+                  <h5 className="mt-3 font-semibold">Connect with your fellow attendees</h5>
+
+                  <p className="mt-3 text-sm">
+                    Below, you`ll find a list of attendees that RSVPed to the event. Spend some time looking through the list to visit socials and connect with other attendees from the event
+                  </p>
+                  <p className="mt-2 text-sm">The more full your profile is, the higher it gets ranked on the post-event page. Don`t be shy - share your socials and bio!</p>
                 </div>
               </div>
 
@@ -117,6 +128,15 @@ const PreviewEvent = () => {
 
                 {/* About Section */}
                 <div>
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Hosted By</h2>
+                  <div className="mb-5">
+                    <p className="flex gap-5">
+                      <span>
+                        <img className="w-10 rounded-full" src={event.Organizer.profileImageUrl} alt="User" />
+                      </span>
+                      <span className="py-1">{event.Organizer.name}</span>
+                    </p>
+                  </div>
                   <h2 className="text-xl font-bold text-gray-900 mb-3">About Event</h2>
                   <p className="text-gray-600 text-sm leading-relaxed">{event.description}</p>
                 </div>
@@ -145,6 +165,7 @@ const PreviewEvent = () => {
                         tags={revent.tags}
                         organizer={revent.Organizer.name}
                         eventCode={revent.eventCode}
+                        status={revent.status}
                       />
                     </div>
                   ))}

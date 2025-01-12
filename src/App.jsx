@@ -10,6 +10,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import EmailVerification from "./pages/EmailVerification/EmailVerification";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import AddEvent from "./pages/AddEvent/AddEvent";
+import EventList from "./pages/EventList/EventList";
 import EditEvent from "./pages/EditEvent/EditEvent";
 import PreviewEvent from "./pages/PreviewEvent/PreviewEvent";
 import Orders from "./pages/Orders/Orders";
@@ -52,12 +53,13 @@ function App() {
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />
+          <Route path="/explore/event" element={<EventList />} />
           <Route path="/event/:eventCode" element={<PreviewEvent />} />
           <Route path="/event/view" element={<EventPage />} />
           <Route path="/event/rsvp" element={<EventRSVP />} />
           <Route path="/event/add" element={<AddEvent />} />
-          <Route path="/event/edit" element={<EditEvent />} />
-          <Route path="/event/media/:eventCode" element={<EventMediaGallery />} />
+          <Route path="/event/edit/:eventCode" element={<EditEvent />} />
+          <Route path="/event/media/:id" element={<EventMediaGallery />} />
           <Route path="/event/review" element={<EventReviewsPage />} />
           <Route path="/orders/:id" element={<Orders />} />
           <Route path="/ticket" element={<Ticket />} />

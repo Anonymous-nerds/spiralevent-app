@@ -8,7 +8,7 @@ import Logo from "../../assets/spiraleE4.png";
 
 const navigation = [
   { name: "Overview", href: "/dashboard" },
-  { name: "Events", href: "/events" },
+  { name: "Explore", href: "/explore/event" },
   { name: "Buy Ticket", href: "/ticket" },
   { name: "Create an Event", href: "/Expanses" },
   { name: "Pirce", href: "/Customers" },
