@@ -29,11 +29,12 @@ import CreateBanner from "./pages/CreateBanner/CreateBanner";
 import ForgetPasswordMessage from "./pages/ForgetPasswordMessage/ForgetPasswordMessage";
 import UserUpdate from "./pages/UserUpdate/UserUpdate";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
     <div className="App font-nunito-eb">
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.7.0/css/pro.min.css" />
+      <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.7.0/css/pro.min.css" />
       <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <BrowserRouter>
         <Routes>
@@ -51,6 +52,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/createBanner" element={<CreateBanner />} />
           {/* ********************** Require Auth ********************** */}
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />
