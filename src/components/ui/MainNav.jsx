@@ -5,9 +5,11 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../../assets/spiraleE4.png";
 // import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 // import User from "../assets/102716454.jpeg";
+import useUserInfo from "../../../hooks/useUserInfo";
+import LoginIn from "../../auth/isLoginIn";
 
 const navigation = [
-  { name: "Overview", href: "/dashboard" },
+  { name: "Overview", href: "/" },
   { name: "Explore", href: "/explore/event" },
   { name: "Buy Ticket", href: "/ticket" },
   { name: "Create an Event", href: "/Expanses" },
@@ -17,27 +19,15 @@ const navigation = [
 ];
 
 export default function Nav() {
-  const [userData, setUserData] = useState({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { userInfo } = useUserInfo();
 
-  useEffect(() => {
-    // Retrieve the items from local storage
-    const storedEmail = localStorage.getItem("email");
-    const storedUserImage = localStorage.getItem("userImage");
-    const storedUsername = localStorage.getItem("username");
-    const storedName = localStorage.getItem("name");
-    const storedToken = localStorage.getItem("token");
-    const storedUserID = localStorage.getItem("userID");
 
-    setUserData({
-      email: storedEmail,
-      userImage: storedUserImage,
-      username: storedUsername,
-      name: storedName,
-      token: storedToken,
-      userID: storedUserID,
-    });
-  }, []);
+
+  //************  Get User Information from the custom hooks ************ //
+  // if (isLoading) { return <Loader />; }
+  if (!userInfo) { return <LoginIn />; }
+
 
   return (
     <div className="bg-transparent pb-24">
@@ -73,13 +63,10 @@ export default function Nav() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className="flex gap-3 rounded-full border border-black p-1">
               <span className="py-2 px-1 text-sm" style={{ fontSize: "12px" }}>
-                {/* {userData.name} */}
-                Username
+                {userInfo.name}
               </span>
               <span className="px-1">
-                <img className="w-8 rounded-full" src={Logo} alt="User"
-                // src={userData.userImage}
-                />
+                <img className="w-8 rounded-full" alt="User" src={userInfo.profileImageUrl} />
               </span>
             </div>
           </div>
@@ -112,10 +99,10 @@ export default function Nav() {
                 <div className="w-[140px]">
                   <div className="flex gap-3 rounded-full border border-black p-1">
                     <span className="py-2 px-1 text-sm" style={{ fontSize: "12px" }}>
-                      {userData.name}
+                      {userInfo.name}
                     </span>
                     <span className="px-1">
-                      <img className="w-8 rounded-full" src={userData.userImage} alt="User" />
+                      <img className="w-8 rounded-full" alt="User" src={userInfo.profileImageUrl} />
                     </span>
                   </div>
                 </div>

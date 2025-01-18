@@ -24,7 +24,7 @@ const useUserInfo = () => {
     }
   }, [userID]);
 
-  return { userInfo, isLoading };
+  return { userInfo };
 };
 
 

@@ -6,14 +6,14 @@ import { LayoutDashboard } from 'lucide-react';
 import Navigation from '../../components/ui/Navigation';
 import EventCard from '../../components/ui/EventCard';
 import useUserInfo from "../../../hooks/useUserInfo.js";
-import Loader from "../../components/loader.jsx";
+// import Loader from "../../components/loader.jsx";
 // import LoadingEvent from "../../components/LoadingEvent.jsx";
 
 const Dashboard = () => {
   //********************** state variables **********************//
   const [relatedEvents, setRelatedEvents] = useState([]);
   const [topEvents, setTopEvents] = useState([]);
-  const { userInfo, isLoading } = useUserInfo();
+  const { userInfo } = useUserInfo();
   const [isLoadingRelated, setIsLoadingRelated] = useState(false);
   const [Loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
@@ -77,7 +77,7 @@ const Dashboard = () => {
   }, []);
 
   //************  Get User Information from the custom hooks ************ //
-  if (isLoading) { return <Loader />; }
+  // if (isLoading) { return <Loader />; }
   if (!userInfo) { return <LoginIn />; }
 
 
@@ -123,10 +123,7 @@ const Dashboard = () => {
                 {incomeData.map((height, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
                     <div className="w-2 h-2 bg-blue-400 rounded-full" />
-                    <div
-                      style={{ height: `${height}px` }}
-                      className="w-[1px] bg-blue-200"
-                    />
+                    <div style={{ height: `${height}px` }} className="w-[1px] bg-blue-200" />
                     <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full bg-gray-100 text-sm">
                       {days[index]}
                     </div>
@@ -176,9 +173,9 @@ const Dashboard = () => {
                   status=""
                   tags={topEvent.tags}
                   description={topEvent.description}
-                  location="Germany"
+                  location={topEvent.location}
                   time="2h ago"
-                  price="$10"
+                  price={`${topEvent.ticketPrice}`}
                 />
               ))}
 

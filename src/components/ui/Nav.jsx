@@ -5,8 +5,10 @@ import ResponsiveMenu from "../ResponsiveMenu";
 import logo from "../../assets/spiraleE4.png";
 import "../../App.css"
 
+
 const Nav = () => {
   const [open, setOpen] = React.useState(false);
+
   return (
     <>
       <nav className="shadow-lg">

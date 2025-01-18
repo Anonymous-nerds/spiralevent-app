@@ -12,12 +12,12 @@ const TopEvent = ({ icon, title, price, user, tags, description, location, time,
             </div>
             <div>
               <h3 className="font-semibold">{title}</h3>
-              <p className="text-gray-500">{price}</p>
+              <p className="text-gray-500">{status}</p>
             </div>
           </div>
           <span className={`px-3 py-1 rounded-full text-sm ${status === 'Paid' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-500'
             }`}>
-            {status}
+            {price}
           </span>
         </div>
         <div className="flex flex-wrap gap-2 mb-4">
