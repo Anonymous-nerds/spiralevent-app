@@ -2,24 +2,70 @@ import React, { useState, useEffect } from "react";
 import TopEvent from '../../components/TopEvent';
 import LoginIn from "../../auth/isLoginIn.jsx";
 import api from "../../../utils/api.js";
-import { ChevronDown, FileText, Globe, Palette } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 import Navigation from '../../components/ui/Navigation';
 import EventCard from '../../components/ui/EventCard';
-import Image from "../../assets/dev-fest.jpg"
+import useUserInfo from "../../../hooks/useUserInfo.js";
+import Loader from "../../components/loader.jsx";
+// import LoadingEvent from "../../components/LoadingEvent.jsx";
 
 const Dashboard = () => {
+  //********************** state variables **********************//
   const [relatedEvents, setRelatedEvents] = useState([]);
+  const [topEvents, setTopEvents] = useState([]);
+  const { userInfo, isLoading } = useUserInfo();
   const [isLoadingRelated, setIsLoadingRelated] = useState(false);
+  const [Loading, setLoading] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  //********************** set date **********************//
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const incomeData = [20, 30, 100, 60, 80, 40, 30];
 
+
+  //********************** Fetch event details **********************//
+  useEffect(() => {
+    setLoading(true); //set loading state to be true
+    api.get(`/events/get/tags?tags=trending`)
+      .then(response => {
+        const events = response.data.data;
+        if (events.length > 0) {
+          const randomIndex = Math.floor(Math.random() * events.length);
+          setEvents(events[randomIndex]);
+        } else {
+          console.log("No events found.");
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching events:", error);
+      })
+      .finally(() => { setLoading(false); });
+  }, []);
+
+
+  //************  Fetch top events ************ //
+  useEffect(() => {
+    // if (events.length > 0 && events[0].tags) {
+    // setIsLoadingRelated(true);
+    // const tagsQuery = events[0].tags.join(',');
+    api.get(`/events/get/tags?tags=trending,SpiralEvent`)
+      .then(response => {
+        const filteredTopEvents = response.data.data.filter(
+          topEvent => topEvent.eventType == "public")
+          .slice(0, 3);
+        // console.log(filteredTopEvents) // for debugging
+        setTopEvents(filteredTopEvents);
+      }).catch(error => { console.error('Error fetching related events:', error); })
+      .finally(() => { setIsLoadingRelated(false); });
+    // }
+  }, []);
 
   //************  Fetch related events only when events[0] exists and has tags ************ //
   useEffect(() => {
     // if (events.length > 0 && events[0].tags) {
     setIsLoadingRelated(true);
     // const tagsQuery = events[0].tags.join(',');
-    api.get(`/events/get/tags?tags=test,tranding,SpiralEvent`)
+    api.get(`/events/get/tags?tags=test,trending,SpiralEvent`)
       .then(response => {
         const filteredEvents = response.data.data.filter(
           relatedEvent => relatedEvent.eventType == "public");
@@ -30,29 +76,37 @@ const Dashboard = () => {
     // }
   }, []);
 
+  //************  Get User Information from the custom hooks ************ //
+  if (isLoading) { return <Loader />; }
+  if (!userInfo) { return <LoginIn />; }
+
+
   return (
     <div className="p-6 flex min-h-screen bg-neutral-100">
-      {/* <LoginIn /> */}
+      <LoginIn />
       <Navigation />
       {/* Main Content */}
       <div className="flex-1 md:ml-64 mt-24">
+        <div className="p-2 my-5">
+          <h1 className="text-2xl font-semibold">Hey, <span className="font-extrabold">{userInfo.name}</span></h1>
+        </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {/* Income Tracker Card */}
           <div className="bg-white rounded-3xl p-4 md:p-6 col-span-1 md:col-span-2 lg:col-span-2">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
               <div className="flex items-center gap-2 mb-2 sm:mb-0">
-                <FileText className="text-gray-600" />
-                <h2 className="text-xl md:text-2xl font-semibold">Income Tracker</h2>
+                <LayoutDashboard className="text-gray-600" />
+                <h2 className="text-xl md:text-2xl font-semibold">Discover Events with <span className="text-pink-800">SpiralEvent</span></h2>
               </div>
-              <button className="flex items-center font-bold gap-1 px-4 py-1 rounded-full bg-gray-100">
-                Top Event
-              </button>
+              {/* <button className="flex items-center font-bold gap-1 px-4 py-1 rounded-full bg-pink-100">
+                Event
+              </button> */}
             </div>
             <p className="text-gray-500 text-sm md:text-base mb-6 md:mb-8">
-              Track changes in income over time and access detailed data on each project and payments received
+              Explore a wide range of events tailored to your interests. From concerts and workshops to conferences and festivals, find the perfect event for you.
             </p>
 
-            {/* Chart Section */}
+
             <div className="relative min-h-[300px] md:h-48 mb-4">
               <div className="absolute top-0 left-4">
                 <span className="text-2xl md:text-3xl font-bold">+20%</span>
@@ -60,11 +114,11 @@ const Dashboard = () => {
                   This week`s income is<br />higher than last week`s
                 </p>
               </div>
-              <div className="absolute top-4 right-4">
+              {/* <div className="absolute top-4 right-4">
                 <span className="bg-gray-900 text-white px-3 py-1 rounded-full text-sm md:text-base">
                   $2,567
                 </span>
-              </div>
+              </div> */}
               <div className="flex justify-between items-end h-full pt-20">
                 {incomeData.map((height, index) => (
                   <div key={index} className="flex flex-col items-center gap-2">
@@ -81,78 +135,59 @@ const Dashboard = () => {
               </div>
             </div>
 
+
             {/* Event Content Section */}
-            <div className="mt-8 md:mt-10">
-              <div className="w-full h-48 md:h-64 bg-gray-200 rounded-xl overflow-hidden">
-                <img
-                  src={Image}
-                  alt="Event"
-                  className="w-full h-full object-cover"
-                />
+            {Loading ? (
+              <div className="p-5 space-y-1 lg:grid lg:grid-cols-1 lg:gap-x-3 lg:space-y-0">
+                {[1].map((item) => (
+                  <div key={item} className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>
+                ))}
               </div>
-              <div className="mt-4 md:mt-5">
-                <h3 className="text-xl md:text-2xl font-bold">Sprial Event Title</h3>
-                <p className="text-sm md:text-base mt-2 md:mt-3 text-gray-600 leading-relaxed">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil ab quidem quia sunt ullam,
-                  soluta neque natus repellat recusandae, ratione voluptatibus officia perspiciatis sed
-                  provident necessitatibus. In at ratione optio.
-                </p>
+            ) : (
+              <div className="mt-8 md:mt-10">
+                <div className="w-full h-48 md:h-64 bg-gray-200 rounded-xl overflow-hidden">
+                  <img src={events.eventBanner} alt={events.eventName} className="w-full h-full" />
+                </div>
+                <div className="mt-4 md:mt-5">
+                  <h3 className="text-xl md:text-2xl font-bold">{events.eventName}</h3>
+                  <p className="text-sm md:text-base mt-2 md:mt-3 text-gray-600 leading-relaxed">
+                    {events.description}
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
+
           </div>
 
           {/* Recent Projects Card */}
           <div className="bg-white rounded-3xl p-4 md:p-6">
             <div className="flex justify-between items-center mb-4 md:mb-6">
-              <h2 className="text-xl md:text-2xl font-semibold">Your Recent Projects</h2>
-              <button className="text-sm text-gray-500 hover:text-gray-700">
-                See all Project
-              </button>
+              <h2 className="text-xl md:text-lg font-semibold">Your Recent Events</h2>
+              <button className="text-[11px] text-gray-500 hover:text-gray-700">See all Events</button>
             </div>
 
             {/* Project List */}
             <div className="space-y-4">
-              <TopEvent
-                icon={<Globe className="text-white" />}
-                title="Web Development Project"
-                rate="$10/hour"
-                tags={['Remote', 'Part-time']}
-                description="This project involves implementing both frontend and backend functionalities, as well as integrating with third-party APIs."
-                location="Germany"
-                time="2h ago"
-                status="Paid"
-                bgColor="bg-red-500"
-              />
+              {topEvents.map((topEvent, index) => (
+                <TopEvent
+                  key={index}
+                  user={topEvent.Organizer.profileImageUrl}
+                  title={topEvent.eventName}
+                  status=""
+                  tags={topEvent.tags}
+                  description={topEvent.description}
+                  location="Germany"
+                  time="2h ago"
+                  price="$10"
+                />
+              ))}
 
-              <TopEvent
-                icon={<FileText className="text-white" />}
-                title="Copyright Project"
-                rate="$10/hour"
-                tags={['Remote', 'Part-time']}
-                description="Content writing and copyright management project"
-                location="USA"
-                time="5h ago"
-                status="Not Paid"
-                bgColor="bg-blue-500"
-              />
-
-              <TopEvent
-                icon={<Palette className="text-white" />}
-                title="Web Design Project"
-                rate="$10/hour"
-                tags={['Remote', 'Full-time']}
-                description="UI/UX design for web application"
-                location="UK"
-                time="1d ago"
-                status="Paid"
-                bgColor="bg-purple-500"
-              />
             </div>
           </div>
         </div>
         {/* Related Events Section */}
         <section className="mt-10">
-          <h2 className="text-3xl font-bold text-gray-900 ml-10 mb-6">Related Events</h2>
+          <h2 className="text-3xl font-bold text-gray-900 ml-10 mb-6">Events For You</h2>
           {isLoadingRelated ? (
             <div className="p-5 space-y-1 lg:grid lg:grid-cols-2 lg:gap-x-3 lg:space-y-0">
               {[1, 2].map((item) => (

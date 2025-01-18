@@ -38,7 +38,7 @@ function App() {
       <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/sample" element={<Sample />} />
           <Route path="/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />
@@ -52,7 +52,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/createBanner" element={<CreateBanner />} />
           {/* ********************** Require Auth ********************** */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/profile" element={<ProfilePage />} />

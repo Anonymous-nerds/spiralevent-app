@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./PreviewEvent.scss";
 import Navigation from "../../components/ui/Navigation";
-import { CalendarMinusIcon, LocateIcon, Tickets, ImageUpscale } from "lucide-react";
+import { CalendarMinusIcon, LocateIcon, Tickets, ImageUpscale, Star } from "lucide-react";
 import EventCard from "../../components/ui/EventCard.jsx";
 import LoginIn from "../../auth/isLoginIn.jsx";
 import api from "../../../utils/api.js";
 import { Link, useParams } from "react-router-dom";
 // Loading skeleton component
 import LoadingEvent from "../../components/LoadingEvent.jsx";
+import { Helmet } from "react-helmet";
 
 const PreviewEvent = () => {
   //********************** state variables **********************//
   const { eventCode } = useParams();
   const [events, setEvents] = useState([]);
+  const [eventsName, setEventsName] = useState("");
   const [relatedEvents, setRelatedEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingRelated, setIsLoadingRelated] = useState(false);
@@ -21,7 +23,7 @@ const PreviewEvent = () => {
   useEffect(() => {
     setIsLoading(true); //set loading state to be true
     api.get(`/events/${eventCode}`)
-      .then(response => { setEvents(response.data.data); })
+      .then(response => { setEvents(response.data.data); setEventsName(response.data.data[0].eventName) })
       .catch(error => { console.error('Error fetching events:', error); })
       .finally(() => { setIsLoading(false); });
   }, [eventCode]);
@@ -44,6 +46,9 @@ const PreviewEvent = () => {
 
   return (
     <div className="PreviewEvent flex min-h-screen bg-neutral-100">
+      <Helmet>
+        <title>{eventsName} ~ Spiral Event</title>
+      </Helmet>
       <LoginIn />
       <Navigation />
 
@@ -75,9 +80,19 @@ const PreviewEvent = () => {
                   <h3 className="text-lg font-bold">Attendees ({event.Attendees.length})</h3>
                   <h5 className="mt-3 font-semibold">Connect with your fellow attendees</h5>
 
-                  <p className="mt-3 text-sm">
+                  <p className="mt-3 mb-5 text-sm">
                     Below, you`ll find a list of attendees that RSVPed to the event. Spend some time looking through the list to visit socials and connect with other attendees from the event
                   </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center mb-5 sm:mb-5 space-y-4 sm:space-y-0">
+                    <div className="flex -space-x-2">
+                      {event.Attendees.map((attendee, i) => (
+                        <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 border-2 border-white">
+                          <img src={attendee.profileImageUrl} alt={`attendee-${i}`} className="w-full h-full object-cover rounded-full" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                   <p className="mt-2 text-sm">The more full your profile is, the higher it gets ranked on the post-event page. Don`t be shy - share your socials and bio!</p>
                 </div>
               </div>

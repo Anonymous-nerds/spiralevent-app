@@ -21,7 +21,7 @@ const EventCard = ({ Banner, date, title, tags, organizer, eventCode, status }) 
           {/* Tags */}
           <div className="flex flex-wrap gap-1 mt-3">
             {tags.map((tag) => (
-              <span key={tag} className="px-4 py-2 rounded-full bg-green-100 text-black font-medium text-sm hover:bg-green-200 transition-colors">{tag}</span>
+              <span key={tag} className="px-4 py-2 rounded-full bg-pink-600 text-white font-medium text-[11px] hover:bg-pink-500 transition-colors">{tag}</span>
             ))}
             <span className="px-4 py-2 text-gray-600 font-medium text-sm">
             </span>

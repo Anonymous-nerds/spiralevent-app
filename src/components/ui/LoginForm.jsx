@@ -57,7 +57,7 @@ const LoginForm = () => {
           //**********************  show success message ********************** //
           toast.success(res.data.message);
           //**********************  naviage to dashboard ********************** //
-          navigate("/dashboad");
+          navigate("/");
         }).catch((error) => {
           console.log(error);
           toast.error(error.response.data.error);
