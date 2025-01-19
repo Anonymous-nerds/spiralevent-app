@@ -1,12 +1,11 @@
-// "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../../assets/spiraleE4.png";
 // import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 // import User from "../assets/102716454.jpeg";
 import useUserInfo from "../../../hooks/useUserInfo";
-import LoginIn from "../../auth/isLoginIn";
+// import LoginIn from "../../auth/isLoginIn";
 
 const navigation = [
   { name: "Overview", href: "/" },
@@ -22,24 +21,20 @@ export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { userInfo } = useUserInfo();
 
-
-
   //************  Get User Information from the custom hooks ************ //
   // if (isLoading) { return <Loader />; }
-  if (!userInfo) { return <LoginIn />; }
+  // if (!userInfo) { return <LoginIn />; }
+  if (!userInfo) { return <p>Loading...</p>; }
 
 
   return (
     <div className="bg-transparent pb-24">
       <header className="inset-x-0 top-0 z-50 fixed">
-        <nav
-          className="flex items-center justify-between p-6 lg:px-8 bg-transparent bg-opacity-20 backdrop-blur-lg"
-          aria-label="Global"
-        >
+        <nav className="flex items-center justify-between p-6 lg:px-8 bg-transparent bg-opacity-20 backdrop-blur-lg"
+          aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Spiral Event</span>
-
               <img className="App-logo h-8 w-auto" src={Logo} alt="Logo" />
             </a>
           </div>
@@ -55,8 +50,7 @@ export default function Nav() {
           </div>
           <div className="hidden lg:flex lg:gap-x-10">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href}
-                className="text-sm font-semibold leading-6 text-black"
+              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-black"
                 style={{ fontSize: "12px" }}>{item.name}</a>
             ))}
           </div>

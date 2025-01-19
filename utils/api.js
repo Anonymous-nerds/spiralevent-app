@@ -5,9 +5,7 @@ const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Devel
 // const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
 
 //********************** Create an axios instance **********************//
-const api = axios.create({
-  baseURL: API_DEV_LINK, // Backend API URL
-});
+const api = axios.create({ baseURL: API_DEV_LINK, });
 
 //********************** Include token in authenticated requests (if using JWT) **********************//
 api.interceptors.request.use((config) => {

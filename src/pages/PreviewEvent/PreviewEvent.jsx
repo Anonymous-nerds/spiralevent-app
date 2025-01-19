@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./PreviewEvent.scss";
 import Navigation from "../../components/ui/Navigation";
 import { CalendarMinusIcon, LocateIcon, Tickets, ImageUpscale, Star } from "lucide-react";

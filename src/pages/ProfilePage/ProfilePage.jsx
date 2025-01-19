@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Camera, Settings } from 'lucide-react';
 import Navigation from "../../components/ui/Navigation";
 import Logo from "../../assets/logo-me.png"
+import "./ProfilePage.scss";
 
 const ProfilePage = () => {
 
   return (
-    <div className="flex min-h-screen bg-neutral-100">
+    <div className="ProfilePage flex min-h-screen bg-neutral-100">
       <Navigation />
       <div className="flex-1 md:ml-64">
-        <div className="max-w-4xl mx-auto py-32">
+        <div className="max-w-4xl py-32">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-4">
@@ -46,38 +47,79 @@ const ProfilePage = () => {
                   <h1 className="text-2xl font-semibold">Profile</h1>
                   <p className="text-gray-500">Update your photo and personal details</p>
                 </div>
-                <button className="px-4 py-2 bg-gray-800 text-white rounded-lg">
-                  Save
-                </button>
               </div>
 
               {/* Form */}
               <form className="space-y-6">
                 <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Name"
-                    />
+                  <div className="p-5 space-y-1 lg:grid lg:grid-cols-3 lg:gap-x-3 lg:space-y-0">
+                    <div className='py-4'>
+                      <label className="labelStyle">Full Name</label>
+                      <input type="text" className="inputStyle" placeholder="E.g: John Doe" />
+                    </div>
+                    <div className='py-4'>
+                      <label className="labelStyle">Username</label>
+                      <input
+                        type="text"
+                        className="inputStyle"
+                        placeholder="Name"
+                      />
+                    </div>
+                    <div className='py-4'>
+                      <label className="labelStyle">Username</label>
+                      <input
+                        type="text"
+                        className="inputStyle"
+                        placeholder="Name"
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Website
-                    </label>
-                    <input
-                      type="url"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Website"
-                    />
+                  <div className="p-5 space-y-1 lg:grid lg:grid-cols-2 lg:gap-x-3 lg:space-y-0">
+                    <div className='py-4'>
+                      <label className="labelStyle">Username</label>
+                      <input
+                        type="text"
+                        className="inputStyle"
+                        placeholder="Name"
+                      />
+                    </div>
+
+                    <div className='py-4'>
+                      <label className="labelStyle">
+                        Website
+                      </label>
+                      <input
+                        type="url"
+                        className="inputStyle"
+                        placeholder="Website"
+                      />
+                    </div>
+                    <div className='py-4'>
+                      <label className="labelStyle">
+                        Username
+                      </label>
+                      <input
+                        type="text"
+                        className="inputStyle"
+                        placeholder="Name"
+                      />
+                    </div>
+
+                    <div className='py-4'>
+                      <label className="labelStyle">
+                        Website
+                      </label>
+                      <input
+                        type="url"
+                        className="inputStyle"
+                        placeholder="Website"
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <div className='py-4'>
+                    <label className="labelStyle">
                       Your Photo
                     </label>
                     <div className="flex items-center gap-4">
@@ -105,7 +147,7 @@ const ProfilePage = () => {
                       Your Bio
                     </label>
                     <textarea
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="inputStyle"
                       rows={4}
                       placeholder="Add a short bio..."
                     />

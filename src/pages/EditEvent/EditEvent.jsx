@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navigation from "../../components/ui/Navigation";
 import "./EditEvent.scss"
 import { Link } from "react-router-dom";

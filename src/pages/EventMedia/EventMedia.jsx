@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Upload, X, Image as ImageIcon, Film, Plus } from 'lucide-react';
 import api from '../../../utils/api';
 import Navigation from "../../components/ui/Navigation";

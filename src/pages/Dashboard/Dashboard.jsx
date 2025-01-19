@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import TopEvent from '../../components/TopEvent';
 import LoginIn from "../../auth/isLoginIn.jsx";
 import api from "../../../utils/api.js";

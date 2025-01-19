@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navigation from "../../components/ui/Navigation";
 import "./AddEvent.scss"
 import { Link, useNavigate } from "react-router-dom";
@@ -111,20 +111,6 @@ const AddEvent = () => {
           if (key === "tags") { formData.append(key, JSON.stringify(value)); }
           else { formData.append(key, value); }
         });
-        // formData.append('eventName', data.eventName);
-        // formData.append('description', data.description);
-        // formData.append('startDate', data.startDate);
-        // formData.append('endDate', data.endDate);
-        // formData.append('startTime', data.startTime);
-        // formData.append('location', data.location);
-        // formData.append('category', data.category);
-        // formData.append('eventType', data.eventType);
-        // formData.append('ticketPrice', data.ticketPrice);
-        // formData.append('eventURL', data.eventURL);
-        // formData.append('tags', data.tags);
-        // formData.append('startTime', data.startTime);
-        // formData.append('endTime', data.endTime);
-        // formData.append('maxAttendees', data.maxAttendees);
         formData.append('ContentType', contentType);
         formData.append('eventBanner', eventBannerBuffer);
 

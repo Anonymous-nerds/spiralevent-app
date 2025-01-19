@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/spiraleE4.png";
 import { Link, useNavigate } from "react-router-dom";
 import { UserCircle, Lock } from "lucide-react";
@@ -56,16 +56,12 @@ const LoginForm = () => {
           localStorage.setItem("userID", userID);
           //**********************  show success message ********************** //
           toast.success(res.data.message);
-          //**********************  naviage to dashboard ********************** //
-          navigate("/");
+          navigate("/"); // to dashboard
         }).catch((error) => {
           console.log(error);
           toast.error(error.response.data.error);
-          if (error.message) {
-            toast.error(error.message);
-          } else {
-            toast.error(error.response.data.error);
-          }
+          if (error.message) { toast.error(error.message); }
+          else { toast.error(error.response.data.error); }
         });
       }
 
