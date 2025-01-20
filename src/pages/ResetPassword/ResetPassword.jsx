@@ -17,7 +17,7 @@ const ResetPassword = () => {
 
   //********************** state variables **********************//
   const { token } = useParams();
-  // console.log(token); // for debugging
+  console.log(token); // for debugging
   const navigate = useNavigate(); // for navigation after user successfully reset
   const [errors, setErrors] = useState({});
   const [borderColors, setBorderColors] = useState({
