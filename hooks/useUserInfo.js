@@ -15,6 +15,7 @@ const useUserInfo = () => {
       api.get(`/user/get/${userID}`).then(response => {
         // console.log("API response:", response.data.data);
         setUserInfo(response.data.data);
+        localStorage.setItem("userInfo", JSON.stringify(response.data.data));
       }).catch(error => {
         console.error("Error fetching user info:", error);
       }).finally(() => { setIsLoading(false); });
