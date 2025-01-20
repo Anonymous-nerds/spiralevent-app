@@ -11,10 +11,10 @@ const navigation = [
   { name: "Overview", href: "/" },
   { name: "Explore", href: "/explore/event" },
   { name: "Buy Ticket", href: "/ticket" },
-  { name: "Create an Event", href: "/Expanses" },
-  { name: "Pirce", href: "/Customers" },
-  { name: "Banner", href: "/Banner" },
-  { name: "Account", href: "/Account" },
+  { name: "Create an Event", href: "/event/add" },
+  { name: "Pircing", href: "/subscription" },
+  { name: "Banner", href: "/createBanner" },
+  { name: "Account", href: "/user/profile" },
 ];
 
 export default function Nav() {
