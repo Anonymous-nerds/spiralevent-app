@@ -12,8 +12,8 @@ import { toast } from "react-hot-toast";
 const ResetPassword = () => {
 
   //********************** Variables from env file **********************//
-  const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
-  // const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
+  //const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
+  const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
 
   //********************** state variables **********************//
   const { token } = useParams();
@@ -48,7 +48,7 @@ const ResetPassword = () => {
       if (Object.keys(newErrors).length === 0) {
         // console.log("Form submitted successfully", data); //for debugging
         //********************** make a post request to the server **********************//
-        await axios.post(`${API_DEV_LINK}/reset-password/${token}`, data).then((res) => {
+        await axios.post(`${API_PRO_LINK}/reset-password/${token}`, data).then((res) => {
           console.log("Response: ", res);
           console.log("Response data: ", res.data);
           //**********************  show success message ********************** //
