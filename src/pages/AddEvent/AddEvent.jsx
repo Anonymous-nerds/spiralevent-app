@@ -126,7 +126,7 @@ const AddEvent = () => {
 
     } catch (error) {
       console.log("Error creating event:", error);
-      toast.error(error.response?.data?.error || 'Failed to create event');
+      toast.error(error.response.data.error || 'Failed to create event');
     } finally { setLoading(false); }
   };
 
