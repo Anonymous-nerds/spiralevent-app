@@ -30,9 +30,7 @@ const EventMediaGallery = () => {
       const errorMessage = error.response?.data?.message || 'Failed to fetch media items';
       setError(errorMessage);
       toast.error(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
+    } finally { setIsLoading(false); }
   };
 
   useEffect(() => { fetchMediaItems(); }, [id]);
