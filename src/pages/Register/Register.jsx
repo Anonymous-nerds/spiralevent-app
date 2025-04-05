@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import heroimg from "../../assets/register.svg";
 import RegisterForm from "../../components/ui/RegisterForm";
 

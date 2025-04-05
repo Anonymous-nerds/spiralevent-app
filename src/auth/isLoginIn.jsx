@@ -7,7 +7,7 @@ const LoginIn = () => {
 
   //********************** Variables from env file **********************//
   //const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
-  const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
+  const API_LINK = import.meta.env.VITE_BACKEND_API_LINK; // Production API link
 
 
   //********************** state variables **********************//
@@ -24,7 +24,7 @@ const LoginIn = () => {
         if (!token) { navigate("/auth/login"); throw new Error("Token not found"); }
         const headersList = { Authorization: `Bearer ${token}` };
 
-        const reqOptions = { url: `${API_PRO_LINK}/auth/profile`, method: "GET", headers: headersList, };
+        const reqOptions = { url: `${API_LINK}/auth/profile`, method: "GET", headers: headersList, };
 
         const response = await axios.request(reqOptions);
         setIsAuthenticated(response.status === 200 && response.data.message === "Authorized");

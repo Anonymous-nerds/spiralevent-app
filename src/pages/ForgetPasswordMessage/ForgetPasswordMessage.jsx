@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import image from "../../assets/reset.svg";
 
 const ForgetPasswordMessage = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/spiraleE4.png";
 import { Link, useNavigate } from "react-router-dom";
 import { User, UserCircle, Mail, Lock } from "lucide-react";
@@ -10,8 +10,8 @@ import { toast } from "react-hot-toast";
 const RegisterForm = () => {
 
   //********************** Variables from env file **********************//
-  //const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
-  const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
+  //const API_LINK = import.meta.env.VITE_BACKEND_API_LINK; // Development API link
+  const API_LINK = import.meta.env.VITE_BACKEND_API_LINK; // Production API link
 
   const navigate = useNavigate(); // for navigation after user successfully registers
 
@@ -57,7 +57,7 @@ const RegisterForm = () => {
       if (Object.keys(newErrors).length === 0) {
         // console.log("Form submitted successfully", data); //for debugging
         //********************** make a post request to the server **********************//
-        await axios.post(`${API_PRO_LINK}/auth/register`, data).then((res) => {
+        await axios.post(`${API_LINK}/auth/register`, data).then((res) => {
           console.log("Response: ", res);
           console.log("Response data: ", res.data);
           toast.success(res.data.message);

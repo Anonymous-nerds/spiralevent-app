@@ -9,8 +9,8 @@ import { toast } from "react-hot-toast";
 
 const LoginForm = () => {
   //********************** Variables from env file **********************//
-  //const API_DEV_LINK = import.meta.env.VITE_BACKEND_DEVELOPMENT_API_LINK; // Development API link
-  const API_PRO_LINK = import.meta.env.VITE_BACKEND_PRODUCTION_API_LINK; // Production API link
+  //const API_LINK = import.meta.env.VITE_BACKEND_API_LINK; // Development API link
+  const API_LINK = import.meta.env.VITE_BACKEND_API_LINK; // Production API link
 
   const navigate = useNavigate(); // for navigation after user successfully registers
 
@@ -46,7 +46,7 @@ const LoginForm = () => {
         // console.log("Form submitted successfully", data); //for debugging
         // Proceed with form submission logic
         //********************** make a post request to the server **********************//
-        await axios.post(`${API_PRO_LINK}/auth/login`, data).then((res) => {
+        await axios.post(`${API_LINK}/auth/login`, data).then((res) => {
           console.log("Response: ", res);
           console.log("Response data: ", res.data);
           //********************** prepare data to store in localstorage **********************//
