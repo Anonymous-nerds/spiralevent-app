@@ -1,48 +1,64 @@
 import React from 'react'
+import logo from "../../assets/spiraleE3.png";
+
 
 const Ticket = () => {
   return (
-    <div className='Ticket'>
-      <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
-        {/* <!-- Background --> */}
-        <rect width="800" height="300" fill="white" />
+    <div className='main'>
+      <section className='bg-[#dad9dd] '>
+        <div>
+          <img src={logo} alt="" srcset="" className='lg:left-[60px] left-[50px] w-[200px] h-[50px] top-[15px] relative' />
 
-        {/* <!-- Left Pattern --> */}
-        <path d="M0 0 L200 0 L180 300 L0 300 Z" fill="#fce7f3" />
+        </div>
 
-        {/* <!-- Ticket Border --> */}
-        <rect x="10" y="10" width="780" height="280" stroke="#111" fill="none" strokeWidth="2" />
+        <section className='contact flex justify-center items-center min-h-[100%]'>
 
-        {/* <!-- Dotted Line --> */}
-        <line x1="600" y1="10" x2="600" y2="290" stroke="#111" strokeWidth="2" strokeDasharray="8" />
+          <div className=' bg-[#fff] max-w-[1200px] w-[100%] pr-[25px] pl-[25px] pt-[30px] pb-[30px] rounded-[5px] shadow-md border-black outline-[20px] outline-[#000] text-[#333]
+    m-[25px] justify-between flex  '>
+            <div className="left ">
+              <h2 className='text-4xl  font-bold text-pink-800 pb-[10px] pt-[18px] lg:pl-[50px]'>GitHub Universe 2023</h2>
+              <h2 className='font-bold text-3xl pb-[20px] pt-[10px] lg:pl-[50px]'>General Admission</h2>
+              <div className='flex relative justify-content-center'>
+                <h2 className='pb-[10px] lg:pr-[10px] font-bold text-[13px] sm:text-[18px] md:text-[18px] lg:pl-[50px]'>December 15, 2023 • 9:00 AM - 5:00 PM</h2>
+              </div>
+              <div className='relative flex justify-between pt-[30px] pr-[50px]'>
+                <p className='pb-[10px] font-medium lg:pl-[50px]'>Yerba Buena Center, San Francisco</p>
+                <p className='text-gray-500 font-medium pb-[10px] lg:pl-[50px]'>Ticket Price :  <span className='text-pink-800'>$100.00 </span></p>
 
-        {/* <!-- Event Title --> */}
-        <text x="230" y="60" fontSize="28" fontWeight="bold">GitHub Universe 2023</text>
+              </div>
+              <p className='text-gray-500 font-medium lg:pl-[50px] lg:pt-[30px]'>Order Description</p>
+              <p className=' text-[8px] lg:pl-[50px] lg:pt-[5px] pt-[6px] pr-[50px]'>Order for h****a j**r** y****  Made on 3rd May 2025 at 15:30 WAT</p>
 
-        {/* <!-- Event Details --> */}
-        <text x="230" y="100" fontSize="16">December 15, 2023 • 9:00 AM - 5:00 PM</text>
-        <text x="230" y="130" fontSize="16">Yerba Buena Center, San Francisco</text>
+            </div>
+            <div className="right">
 
-        {/* <!-- Ticket Details --> */}
-        <text x="230" y="180" fontSize="14" fill="#666">Ticket No:</text>
-        <text x="230" y="200" fontSize="16">657855772eb6b44a</text>
+              {/**QR code */}
+              <div><h2 className='pb-[5px] font-bold'>Ticket ID:</h2></div>
+              <div className='w-[180px] bg-black h-[180px]'></div>
 
-        <text x="230" y="240" fontSize="14" fill="#666">Attendee:</text>
-        <text x="230" y="260" fontSize="16">John Smith</text>
 
-        {/* <!-- QR Code Placeholder --> */}
-        <rect x="640" y="70" width="120" height="120" fill="#111" />
-        <text x="650" y="220" fontSize="12" fill="#666" textAnchor="start">SCAN TO VERIFY</text>
 
-        {/* <!-- Decorative Elements --> */}
-        <circle cx="40" cy="40" r="15" fill="#111" />
-        <circle cx="40" cy="260" r="15" fill="#111" />
 
-        {/* <!-- Price Tag --> */}
-        <rect x="640" y="240" width="120" height="40" fill="#fce7f3" />
-        <text x="700" y="265" fontSize="18" textAnchor="middle" fontWeight="bold">$100.00</text>
-      </svg>
-    </div>
+
+            </div>
+
+
+          </div>
+
+
+
+        </section>
+
+        <div className='flex relative items-center pl-[45%] pb-[20px] '>
+          <button className='bg-pink-800 hover:bg-pink-900 text-[#fff] w-[150px] h-[50px] rounded-[10px] shadow-sm'>Download Ticket</button>
+        </div>
+        <div className='rights justify-content-center align-items-center flex'>
+          <h2 className='text-1xl text-gray-500  pl-[200px] lg:pl-[500px] pb-10'>The Spiral Events Team-All Right Reserved</h2>
+        </div>
+
+      </section>
+
+    </div >
   )
 }
 
