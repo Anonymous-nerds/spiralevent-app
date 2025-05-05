@@ -3,6 +3,9 @@ import React from 'react'
 import logo from "../../assets/spiraleE3.png";
 import api from "../../../utils/api.js";
 import { Link, useParams } from "react-router-dom";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 
 
 
@@ -33,7 +36,32 @@ const Ticket = () => {
       return;
     }
 
-  }
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: "a4",
+
+
+    });
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+    console.log(imgProperties)
+
+
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('examplepdf.pdf');
+
+  };
+
+
+
+  const printRef = React.useRef(null);
+
 
   return (
     <div className='main'>
